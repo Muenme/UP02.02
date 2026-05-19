@@ -1,0 +1,126 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.9 Chrome/134.0.6998.205 Electron/35.4.0 Safari/537.36" version="27.0.9">
+  <diagram name="Страница — 1" id="jsGmDfzj5CTI6ErkQX9e">
+    <mxGraphModel dx="564" dy="330" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="u1mqmoMBaQfBilJPefvd-1" value=":Пользователь" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="640" y="220" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-2" value=":Интерфейс" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-3" value=":Приложение" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="330" y="520" width="110" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-5" value=":Сервис обработки фотографий" style="html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="590" y="400" width="120" height="54.55" as="geometry" />
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-6" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="u1mqmoMBaQfBilJPefvd-2" target="u1mqmoMBaQfBilJPefvd-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="280" as="sourcePoint" />
+            <mxPoint x="540" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-13" value="4. Вывести форму пустой покупки&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;5.2.5 Вывести список товаров&lt;/span&gt;&lt;/div&gt;&lt;div&gt;9. Сообщить товар сохранен&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;17. Вывести результат расчетов&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;21. Вывести уведомления покупка сохранена&lt;/span&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-6">
+          <mxGeometry x="-0.6253" y="2" relative="1" as="geometry">
+            <mxPoint x="212" y="47" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-18" value="[данные товара]&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;5.1.1 Создать товар вручную&lt;/span&gt;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-6">
+          <mxGeometry x="0.4434" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-26" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-19" value="[фото]&lt;div&gt;5.2.1 Добавить товары по фото&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-6">
+          <mxGeometry x="-0.7209" y="2" relative="1" as="geometry">
+            <mxPoint x="34" y="-23" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-8" value="1. Создать покупку&lt;div&gt;&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;6. Сохранить товар&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;10. Добавить условие&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;12. Добавить данные о кол-ве чел.&lt;/div&gt;&lt;div&gt;14. Рассчитать&lt;/div&gt;&lt;div&gt;18. Сохранить покупку&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-6">
+          <mxGeometry x="0.0175" y="-1" relative="1" as="geometry">
+            <mxPoint x="-29" y="-66" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-10" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="u1mqmoMBaQfBilJPefvd-2" target="u1mqmoMBaQfBilJPefvd-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="210" y="440" as="sourcePoint" />
+            <mxPoint x="260" y="390" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-11" value="2. Создать покупку&lt;div&gt;&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;5.1.2 Записать данные товара&lt;/span&gt;&lt;/div&gt;&lt;div&gt;7. Сохранить товар&lt;/div&gt;&lt;div&gt;11. Добавить условие&amp;nbsp;&lt;/div&gt;&lt;div&gt;13. Добавить данные о кол-ве чел.&lt;/div&gt;&lt;div&gt;15. Рассчитать&lt;/div&gt;&lt;div&gt;19. Сохранить покупку&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-10">
+          <mxGeometry x="-0.4472" y="1" relative="1" as="geometry">
+            <mxPoint x="-80" y="72" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-12" value="3. Вернуть пустую покупку&lt;div&gt;5.2.4 Вывести товары из чека&lt;br&gt;&lt;div&gt;8. Сообщить товар сохранен&lt;/div&gt;&lt;/div&gt;&lt;div&gt;16. Вернуть результат расчетов&lt;/div&gt;&lt;div&gt;20. Сообщить покупка сохранена&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-10">
+          <mxGeometry x="0.3481" relative="1" as="geometry">
+            <mxPoint x="111" y="-29" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-14" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="195" y="360" as="sourcePoint" />
+            <mxPoint x="250" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-15" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="470" as="sourcePoint" />
+            <mxPoint x="280" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-16" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="255" as="sourcePoint" />
+            <mxPoint x="541" y="255" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-17" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="324" y="238" as="sourcePoint" />
+            <mxPoint x="290" y="238" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="530" y="240" />
+              <mxPoint x="324" y="238" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-20" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="u1mqmoMBaQfBilJPefvd-2" target="u1mqmoMBaQfBilJPefvd-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="410" as="sourcePoint" />
+            <mxPoint x="490" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-22" value="5.2.2 Обработать фото чека" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-20">
+          <mxGeometry x="0.3762" y="-1" relative="1" as="geometry">
+            <mxPoint x="91" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="360" as="sourcePoint" />
+            <mxPoint x="540" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-23" value="" style="endArrow=none;html=1;rounded=0;" edge="1" parent="1" source="u1mqmoMBaQfBilJPefvd-3" target="u1mqmoMBaQfBilJPefvd-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="510" as="sourcePoint" />
+            <mxPoint x="550" y="460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-25" value="5.2.3 Переформатировать данные" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="u1mqmoMBaQfBilJPefvd-23">
+          <mxGeometry x="0.1549" y="1" relative="1" as="geometry">
+            <mxPoint x="94" y="29" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="u1mqmoMBaQfBilJPefvd-24" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="550" y="490" as="sourcePoint" />
+            <mxPoint x="510" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
