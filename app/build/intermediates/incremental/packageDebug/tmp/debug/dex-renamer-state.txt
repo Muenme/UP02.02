@@ -1,9 +1,9 @@
-#Wed May 20 15:22:18 MSK 2026
-base.0=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.3=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.4=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Wed May 20 15:57:24 MSK 2026
+base.0=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.3=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.4=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=2/classes.dex
