@@ -11,5 +11,10 @@ data class Product(
     val title: String,
     val price: Double,
     val quantity: Int,
-    val condition: Map<String, Boolean>
+    val condition: List<ConditionItem>
+)
+
+data class ConditionItem(
+    val participantName: String,
+    val isChecked: Boolean
 )

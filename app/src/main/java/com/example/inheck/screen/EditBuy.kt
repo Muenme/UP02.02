@@ -21,9 +21,87 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import android.os.Bundle
-import com.example.inheck.R
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.ui.Alignment
+import com.example.inheck.data.entity.Participant
+import androidx.compose.foundation.clickable
+import com.example.inheck.data.entity.ConditionItem
+import com.example.inheck.data.entity.Product
 
-import java.sql.Date
+@Composable
+fun ProductRow(
+    product: MutableState<Product>,
+    participants: List<Participant>
+) {
+    var expanded by remember { mutableStateOf(false) }
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp, horizontal = 4.dp),
+            //verticalAlignment = Alignment.CenterVertically
+        ){
+            TextField(
+                value = product.value.title,
+                onValueChange = { product.value = product.value.copy(title = it) },
+                placeholder = { Text("Название") },
+                modifier = Modifier.width(100.dp).height(100.dp)
+            )
+            TextField(
+                value = product.value.quantity.toString(),
+                onValueChange = {newValue ->
+                    val parsedValue = newValue.toInt()
+                    product.value = product.value.copy(quantity = parsedValue) },
+                placeholder = { Text("Количество") },
+                modifier = Modifier.width(100.dp).height(100.dp)
+            )
+            TextField(
+                value = product.value.quantity.toString(),
+                onValueChange = {newValue ->
+                    val parsedValue = newValue.toDouble()
+                    product.value = product.value.copy(price = parsedValue) },
+                placeholder = { Text("Цена") },
+                modifier = Modifier.width(100.dp).height(100.dp)
+            )
+        }
+
+
+        // Отобразить условия (участники + чекбоксы)
+        val currentConditions = product.value.condition.toMutableList()
+        participants.forEach { participant ->
+            val index = currentConditions.indexOfFirst { it.participantName == participant.name }
+            val conditionItem = if (index >= 0) currentConditions[index] else ConditionItem(
+                participant.name,
+                false
+            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(participant.name, modifier = Modifier.weight(1f))
+                Checkbox(
+                    checked = conditionItem.isChecked,
+                    onCheckedChange = { isChecked ->
+                        val updatedCondition = conditionItem.copy(isChecked = isChecked)
+                        if (index >= 0) {
+                            currentConditions[index] = updatedCondition
+                        } else {
+                            currentConditions.add(updatedCondition)
+                        }
+                        product.value = product.value.copy(condition = currentConditions)
+                    }
+                )
+            }
+        }
+    }
+}
+
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -31,55 +109,23 @@ import java.sql.Date
 fun EditBuy(
     onSaveClick: () -> Unit,
     onBackClick: () -> Unit,
-    title: String
+    title: String,
+    participants: List<Participant>
 ) {
+
+
     var date by remember { mutableStateOf(LocalDateTime.now()) }
-    var numberParticipants by remember { mutableStateOf(0) }
-    var productId by remember { mutableStateOf(0) }
-    var participantId by remember { mutableStateOf(0) }
-    var amount by remember { mutableStateOf(0.0) }
+    var numberParticipants by remember { mutableStateOf(1) }
+    var products by remember {  mutableStateOf(mutableStateListOf<Product>())}
+
+    products.add(Product(
+        title = "", condition = participants.map { ConditionItem(it.name, false) }, price = 0.0, quantity = 0
+    ))
 
     var isLoading by remember { mutableStateOf(false) }
-    var showError by remember { mutableStateOf(false) }
-    var errorMessage by remember { mutableStateOf("") }
+
 
     val scope = rememberCoroutineScope()
-
-    fun saveBuyToFile() {
-        isLoading = true
-        scope.launch {
-            try {
-                // Создаем объект покупки
-                val buy = Buy(
-                    date = date,
-                    numberParticipants = numberParticipants,
-                    productId = productId,
-                    participantId = participantId,
-                    amount = amount,
-
-                    )
-
-                // Сохраняем в файл через ....
-
-
-                // Очищаем поля
-                date = null
-                numberParticipants = 0
-                productId = 0
-                participantId = 0
-                amount = 0.0
-
-                // Вызываем колбэк и закрываем экран
-                onSaveClick()
-            } catch (e: Exception) {
-                errorMessage = "Ошибка сохранения: ${e.message}"
-                showError = true
-            } finally {
-                isLoading = false
-            }
-        }
-    }
-
 
     Scaffold(
         topBar = {
@@ -91,7 +137,7 @@ fun EditBuy(
                 ),
                 actions = {
                     TextButton(
-                        onClick = { saveBuyToFile() },
+                        onClick = { onSaveClick() },
                         enabled = !isLoading
                     ) {
                         Text(
@@ -99,6 +145,12 @@ fun EditBuy(
                             color = Color.White,
                             fontSize = 16.sp
                         )
+                    }
+                    TextButton(
+                        onClick = { onBackClick() },
+                        enabled = true
+                    ) {
+                        Text("Отмена", color = Color.White, fontSize = 16.sp)
                     }
                 }
 
@@ -115,108 +167,62 @@ fun EditBuy(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            TextField(
-                value = date,
+            Text(
+                text = "Дата: ${date.toString()}",
+                style = MaterialTheme.typography.bodyLarge
+            )
+
+            OutlinedTextField(
+                value = numberParticipants.toString(),
                 onValueChange = {
-                    val it = null
-                    date = it
+                    val num = it.toIntOrNull() ?: 1
+                    numberParticipants = num
                 },
+                label = { Text("Количество участников") },
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
+                    keyboardType = KeyboardType.Number
                 ),
-                modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Дата создания") },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFFF69B4)
-                )
+                modifier = Modifier.fillMaxWidth()
             )
 
-            TextField(
-                value = numberParticipants,
-                onValueChange = { numberParticipants = it },
-                placeholder = {Text("Магия (например: Огонь)") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
+            // Таблица товаров
+            // Заголовки
+            Row(
                 modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFFF69B4)
-                )
-            )
-
-            TableView(
-                value = productId,
-                onValueChange = { productId = it },
-                placeholder = {Text("Товар") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFFF69B4)
-                )
-            )
-
-            TextField(
-                value = productId,
-                onValueChange = { productId = it },
-                placeholder = {Text("Товар") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFFF69B4)
-                )
-            )
-            @Composable
-            override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                setContentView(R.drawable.activity_main)
-
-            TableLayout(
-                value = productId,
-                onValueChange = { productId = it },
-                placeholder = {Text("Товар") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Text,
-                    imeAction = ImeAction.Next
-                ),
-                modifier = Modifier.fillMaxWidth(),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color(0xFFFF69B4)
-                )
-            )
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFFFE4E1))
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
-                    "Все поля обязательны для заполнения",
-                    modifier = Modifier.padding(16.dp),
-                    fontSize = 14.sp
-                )
+                Text("Название", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+                Text("Количество", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+                Text("Цена", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+                Text("Условие", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+
             }
 
+            // Список товаров
+            products.forEach { product ->
+                val productState = remember { mutableStateOf(product) }
+                ProductRow(product = productState, participants = participants)
+            }
 
+            // Кнопка рассчитать или сохранить
+            Button(
+                onClick = {
+                    // Тут  реализовать логику подсчета или сохранения
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Рассчитать")
+            }
         }
     }
+
 }
 
-@Composable
-fun TableView(
-    value: Int,
-    onValueChange: () -> Unit,
-    placeholder: () -> Unit,
-    keyboardOptions: KeyboardOptions,
-    modifier: Modifier,
-    colors: TextFieldColors
-) {
-    TODO("Not yet implemented")
-}
+
+// Модель товара
+data class ProductItem(
+    var name: String = "",
+    var participantSelected: String = "",
+    var isChecked: Boolean = false
+)
 
