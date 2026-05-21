@@ -25,15 +25,17 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.ui.Alignment
 import com.example.inheck.data.entity.Participant
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Product
+import androidx.compose.material3.AlertDialog
 
 @Composable
 fun ProductRow(
     product: MutableState<Product>,
     participants: List<Participant>
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    val openDialog = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -42,31 +44,45 @@ fun ProductRow(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 4.dp, horizontal = 4.dp),
+                .padding(all = 2.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
             //verticalAlignment = Alignment.CenterVertically
         ){
             TextField(
                 value = product.value.title,
                 onValueChange = { product.value = product.value.copy(title = it) },
-                placeholder = { Text("Название") },
-                modifier = Modifier.width(100.dp).height(100.dp)
+
+                modifier = Modifier.width(100.dp).height(40.dp)
             )
             TextField(
                 value = product.value.quantity.toString(),
                 onValueChange = {newValue ->
                     val parsedValue = newValue.toInt()
                     product.value = product.value.copy(quantity = parsedValue) },
-                placeholder = { Text("Количество") },
-                modifier = Modifier.width(100.dp).height(100.dp)
+
+                modifier = Modifier.width(50.dp).height(40.dp)
             )
             TextField(
                 value = product.value.quantity.toString(),
                 onValueChange = {newValue ->
                     val parsedValue = newValue.toDouble()
                     product.value = product.value.copy(price = parsedValue) },
-                placeholder = { Text("Цена") },
-                modifier = Modifier.width(100.dp).height(100.dp)
+
+                modifier = Modifier.width(70.dp).height(40.dp)
             )
+            Button({ openDialog.value = true }) {
+                Text("^", fontSize = 22.sp)
+            }
+            if (openDialog.value) {
+                AlertDialog(
+                    onDismissRequest = { openDialog.value = false },
+                    confirmButton = {
+                        Button({ openDialog.value = false }) {
+                            Text("OK", fontSize = 22.sp)
+                        }
+                    }
+                )
+            }
         }
 
 
@@ -188,8 +204,9 @@ fun EditBuy(
             // Таблица товаров
             // Заголовки
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth().padding(all = 2.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+
             ) {
                 Text("Название", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
                 Text("Количество", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
