@@ -41,9 +41,12 @@
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
             android:exported="true" />
+<<<<<<< HEAD
         <activity
             android:name="androidx.activity.ComponentActivity"
             android:exported="true" />
+=======
+>>>>>>> origin/Muenme
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -60,6 +63,13 @@
                 android:value="androidx.startup" />
         </provider>
 
+<<<<<<< HEAD
+=======
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+
+>>>>>>> origin/Muenme
         <receiver
             android:name="androidx.profileinstaller.ProfileInstallReceiver"
             android:directBootAware="false"

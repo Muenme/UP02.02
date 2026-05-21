@@ -1,5 +1,6 @@
 package com.example.inheck.screen
 
+<<<<<<< HEAD
 import android.os.Build
 import android.widget.TableLayout
 import androidx.annotation.RequiresApi
@@ -220,3 +221,33 @@ fun TableView(
     TODO("Not yet implemented")
 }
 
+=======
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+
+@Composable
+fun EditBuy(
+    onBack: () -> Unit,
+    toEditProduct: () -> Unit
+)
+{
+    Column {
+        Text("Страница редактирования покупки")
+        Button(
+            onClick = onBack
+        ) {
+            Text("Вернуться")
+        }
+        Button(
+            onClick = toEditProduct
+        ) {
+            Text("Редактировать товар")
+        }
+    }
+
+}
+>>>>>>> origin/Muenme
