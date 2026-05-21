@@ -22,15 +22,20 @@ fun AppNavigation(
         composable(Screen.Main.route) {
             Main(
                 onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
-                onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
-                onNavigateToEditProduct = {navController.navigate(Screen.EditProduct.route)}
+                onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)}
             )
         }
         composable(Screen.EditBuy.route) {
-            EditBuy(onBack = { navController.navigateUp() })
+            EditBuy(
+                onBack = { navController.navigateUp() },
+                toEditProduct = {navController.navigate(Screen.EditProduct.route)}
+            )
         }
         composable(Screen.ReadBuy.route) {
-            ReadBuy(onBack = { navController.navigateUp() })
+            ReadBuy(
+                onBack = { navController.navigateUp() },
+                toEditBuy = {navController.navigate(Screen.EditBuy.route)}
+            )
         }
         composable(Screen.EditProduct.route){
             EditProduct(onBack = { navController.navigateUp() })
