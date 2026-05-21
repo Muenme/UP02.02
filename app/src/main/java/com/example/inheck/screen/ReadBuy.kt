@@ -1,5 +1,4 @@
 package com.example.inheck.screen
-
 import android.widget.Button
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -10,8 +9,7 @@ import androidx.compose.material3.Text
 fun ReadBuy(
     onBack: () -> Unit,
     toEditBuy: () -> Unit
-)
-{
+) {
     Column {
         Text("Страница чтения покупки")
         Button(
@@ -21,7 +19,7 @@ fun ReadBuy(
         }
         Button(
             onClick = toEditBuy
-        ){
+        ) {
             Text("Редактировать")
         }
     }

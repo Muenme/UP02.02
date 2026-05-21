@@ -1,5 +1,4 @@
 package com.example.inheck.screen
-
 import android.annotation.SuppressLint
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
