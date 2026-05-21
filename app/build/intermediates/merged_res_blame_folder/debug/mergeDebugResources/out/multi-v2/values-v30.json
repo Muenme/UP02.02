@@ -1,17 +1,10 @@
 {
     "logs": [
         {
-<<<<<<< HEAD
-            "outputFile": "com.example.inheck.app-mergeDebugResources-50:/values-v30/values-v30.xml",
+            "outputFile": "com.example.inheck.app-mergeDebugResources-48:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\9645a9a0ccb668f2ba48e65ed7cf41f3\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
-=======
-            "outputFile": "com.example.inheck.app-mergeDebugResources-49:/values-v30/values-v30.xml",
-            "map": [
-                {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\b66f1a5b085bf56686e46be2708046fa\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
->>>>>>> master
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\1562023b5052940f61a3c9858956ec84\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -5,11 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-<<<<<<< HEAD
-        android:minSdkVersion="24"
-=======
         android:minSdkVersion="26"
->>>>>>> master
         android:targetSdkVersion="36" />
 
     <permission
@@ -42,11 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity
-            android:name="androidx.compose.ui.tooling.PreviewActivity"
-            android:exported="true" />
-=======
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"
@@ -57,7 +48,6 @@
             android:name="androidx.activity.ComponentActivity"
             android:exported="true"
             android:theme="@android:style/Theme.Material.Light.NoActionBar" />
->>>>>>> master
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -74,10 +64,6 @@
                 android:value="androidx.startup" />
         </provider>
 
-<<<<<<< HEAD
-        <activity
-            android:name="androidx.activity.ComponentActivity"
-=======
         <uses-library
             android:name="androidx.window.extensions"
             android:required="false" />
@@ -87,7 +73,6 @@
 
         <activity
             android:name="androidx.compose.ui.tooling.PreviewActivity"
->>>>>>> master
             android:exported="true" />
 
         <receiver
