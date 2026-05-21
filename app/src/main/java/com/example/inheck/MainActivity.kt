@@ -9,6 +9,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+<<<<<<< HEAD
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.inheck.navigation.MainApp
+=======
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,11 +24,31 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.inheck.data.entity.Participant
 import com.example.inheck.screen.EditBuy
+>>>>>>> master
 import com.example.inheck.ui.theme.InСheckTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+<<<<<<< HEAD
+        enableEdgeToEdge()
+        setContent {
+            InСheckTheme {
+                MainApp(navController = rememberNavController())
+            }
+        }
+    }
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    InСheckTheme {
+        MainApp(navController = rememberNavController())
+    }
+=======
         setContent {
             // Создаем состояние для отображения экрана
             var showEditBuy by remember { mutableStateOf(true) }
@@ -48,4 +75,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+>>>>>>> master
 }
