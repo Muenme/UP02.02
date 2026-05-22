@@ -7,8 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.inheck.data.entity.Buy
+import com.example.inheck.data.entity.Participant
 import com.example.inheck.screen.EditBuy
-import com.example.inheck.screen.EditProduct
 import com.example.inheck.screen.Main
 import com.example.inheck.screen.ReadBuy
 import com.example.inheck.screen.SplashScreen
@@ -25,7 +25,7 @@ fun AppNavigation(
         id = 0,
         date = LocalDateTime.now(),
         numberParticipants = 2,
-        productId = 0,
+        productId = listOf(0),
         participantId = 0,
         amount = 120.0
     )
@@ -33,7 +33,7 @@ fun AppNavigation(
         id = 0,
         date = LocalDateTime.now(),
         numberParticipants = 5,
-        productId = 0,
+        productId = listOf(0),
         participantId = 0,
         amount = 100000.0
     )
@@ -48,8 +48,13 @@ fun AppNavigation(
         }
         composable(Screen.EditBuy.route) {
             EditBuy(
-                onBack = { navController.navigateUp() },
-                toEditProduct = {navController.navigate(Screen.EditProduct.route)}
+                onBackClick = { navController.navigateUp() },
+                title = "Редактировать",
+                participants = listOf(
+                    Participant(id = 0, name = "Аня", check = ""),
+                    Participant(id = 1, name = "Боря", "")
+                ),
+                initialProducts = listOf()
             )
         }
         composable(Screen.ReadBuy.route) {
@@ -58,9 +63,7 @@ fun AppNavigation(
                 toEditBuy = {navController.navigate(Screen.EditBuy.route)}
             )
         }
-        composable(Screen.EditProduct.route){
-            EditProduct(onBack = { navController.navigateUp() })
-        }
+
         composable(Screen.SplashScreen.route) {
             SplashScreen(
                 {

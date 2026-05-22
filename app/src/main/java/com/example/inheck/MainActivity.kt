@@ -18,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.example.inheck.data.entity.Participant
+import com.example.inheck.navigation.MainApp
 import com.example.inheck.screen.EditBuy
 import com.example.inheck.ui.theme.InСheckTheme
 

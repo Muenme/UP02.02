@@ -25,7 +25,7 @@ data class Buy(
     val id: Int = 0,
     val date: LocalDateTime,
     val numberParticipants: Int,
-    val productId: Int,
+    val productId: List<Int>,
     val participantId: Int,
     val amount: Double
 )

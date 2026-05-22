@@ -26,7 +26,6 @@ fun MainApp(
             currentRoute?.startsWith(Screen.Main.route) == true -> NavItem.Main
             currentRoute?.startsWith(Screen.EditBuy.route) == true -> NavItem.EditBuy
             currentRoute?.startsWith(Screen.ReadBuy.route) == true -> NavItem.ReadBuy
-            currentRoute?.startsWith(Screen.EditProduct.route) == true -> NavItem.EditProduct
             else -> {
                 selectedItem
             }
