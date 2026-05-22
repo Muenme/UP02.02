@@ -1,40 +1,22 @@
-<<<<<<< HEAD
-#Thu May 21 09:58:27 MSK 2026
-base.0=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.4=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.5=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.6=D\:\\Panasetskaya\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-=======
-#Thu May 21 11:58:16 MSK 2026
+#Fri May 22 12:59:16 MSK 2026
 base.0=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
 base.3=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.4=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.5=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
->>>>>>> master
+base.4=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.5=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.6=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex
 path.3=2/classes.dex
-<<<<<<< HEAD
 path.4=7/classes.dex
 path.5=9/classes.dex
 path.6=classes2.dex
-=======
-path.4=9/classes.dex
-path.5=classes2.dex
->>>>>>> master
 renamed.0=classes.dex
 renamed.1=classes2.dex
 renamed.2=classes3.dex
 renamed.3=classes4.dex
 renamed.4=classes5.dex
 renamed.5=classes6.dex
-<<<<<<< HEAD
 renamed.6=classes7.dex
-=======
->>>>>>> master

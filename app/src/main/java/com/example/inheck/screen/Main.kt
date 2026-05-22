@@ -12,8 +12,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
+//import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.test.espresso.base.Default
 import com.example.inheck.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +46,7 @@ fun Main(
     Scaffold (
         floatingActionButton = {
             FloatingActionButton (
-                onClick = onNavigateToEditBuy,
+                onClick =  onNavigateToEditBuy,
                 containerColor = Color(0xFFf7f7f7),
                 contentColor = Color(0xFF4d4d4d),
                 modifier = Modifier
@@ -57,7 +57,7 @@ fun Main(
                     )
 
             ){
-                Icon(Icons.Default.Add, contentDescription = "Add")
+//                Icon(Icons.Default.Add, contentDescription = "Add")
             }
 
         }

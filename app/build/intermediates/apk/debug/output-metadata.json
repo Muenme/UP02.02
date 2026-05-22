@@ -17,9 +17,5 @@
     }
   ],
   "elementType": "File",
-<<<<<<< HEAD
-  "minSdkVersionForDexing": 24
-=======
   "minSdkVersionForDexing": 26
->>>>>>> master
 }
