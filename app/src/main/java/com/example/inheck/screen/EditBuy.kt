@@ -29,95 +29,9 @@ import androidx.compose.foundation.layout.Arrangement
 import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Product
 import androidx.compose.material3.AlertDialog
-
-@Composable
-fun ProductRow(
-    product: MutableState<Product>,
-    participants: List<Participant>
-) {
-    val openDialog = remember { mutableStateOf(false) }
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-    ) {
-        Row (
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(all = 2.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
-            //verticalAlignment = Alignment.CenterVertically
-        ){
-            TextField(
-                value = product.value.title,
-                onValueChange = { product.value = product.value.copy(title = it) },
-
-                modifier = Modifier.width(100.dp).height(40.dp)
-            )
-            TextField(
-                value = product.value.quantity.toString(),
-                onValueChange = {newValue ->
-                    val parsedValue = newValue.toInt()
-                    product.value = product.value.copy(quantity = parsedValue) },
-
-                modifier = Modifier.width(50.dp).height(40.dp)
-            )
-            TextField(
-                value = product.value.quantity.toString(),
-                onValueChange = {newValue ->
-                    val parsedValue = newValue.toDouble()
-                    product.value = product.value.copy(price = parsedValue) },
-
-                modifier = Modifier.width(70.dp).height(40.dp)
-            )
-            Button({ openDialog.value = true }) {
-                Text("^", fontSize = 22.sp)
-            }
-            if (openDialog.value) {
-                AlertDialog(
-                    onDismissRequest = { openDialog.value = false },
-                    confirmButton = {
-                        Button({ openDialog.value = false }) {
-                            Text("OK", fontSize = 22.sp)
-                        }
-                    }
-                )
-            }
-        }
-
-
-        // Отобразить условия (участники + чекбоксы)
-        val currentConditions = product.value.condition.toMutableList()
-        participants.forEach { participant ->
-            val index = currentConditions.indexOfFirst { it.participantName == participant.name }
-            val conditionItem = if (index >= 0) currentConditions[index] else ConditionItem(
-                participant.name,
-                false
-            )
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(participant.name, modifier = Modifier.weight(1f))
-                Checkbox(
-                    checked = conditionItem.isChecked,
-                    onCheckedChange = { isChecked ->
-                        val updatedCondition = conditionItem.copy(isChecked = isChecked)
-                        if (index >= 0) {
-                            currentConditions[index] = updatedCondition
-                        } else {
-                            currentConditions.add(updatedCondition)
-                        }
-                        product.value = product.value.copy(condition = currentConditions)
-                    }
-                )
-            }
-        }
-    }
-}
-
+import java.time.format.DateTimeFormatter
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -126,17 +40,29 @@ fun EditBuy(
     onSaveClick: () -> Unit,
     onBackClick: () -> Unit,
     title: String,
-    participants: List<Participant>
+    participants: List<Participant>,
+    initialProducts: List<Product> = emptyList()
 ) {
+    val customFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
 
-
-    var date by remember { mutableStateOf(LocalDateTime.now()) }
+    var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
     var numberParticipants by remember { mutableStateOf(1) }
-    var products by remember {  mutableStateOf(mutableStateListOf<Product>())}
 
-    products.add(Product(
-        title = "", condition = participants.map { ConditionItem(it.name, false) }, price = 0.0, quantity = 0
-    ))
+    // Инициализируем список: если пришёл не пустой – берём его, иначе – один пустой продукт
+    var products = remember {
+        mutableStateListOf<Product>().apply {
+            if (initialProducts.isEmpty()) {
+                add(Product(
+                    title = "",
+                    condition = participants.map { ConditionItem(it.name, false) },
+                    price = 0.0,
+                    quantity = 0
+                ))
+            } else {
+                addAll(initialProducts)
+            }
+        }
+    }
 
     var isLoading by remember { mutableStateOf(false) }
 
@@ -146,9 +72,9 @@ fun EditBuy(
     Scaffold(
         topBar = {
             TopAppBar(
-                {Text(title, fontSize = 20.sp, fontWeight = FontWeight.Bold)},
+                { Text(title, fontSize = 20.sp, fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFFFF69B4),
+                    containerColor = Color(0xFF0D47A1),
                     titleContentColor = Color.White
                 ),
                 actions = {
@@ -187,59 +113,182 @@ fun EditBuy(
                 text = "Дата: ${date.toString()}",
                 style = MaterialTheme.typography.bodyLarge
             )
-
-            OutlinedTextField(
-                value = numberParticipants.toString(),
-                onValueChange = {
-                    val num = it.toIntOrNull() ?: 1
-                    numberParticipants = num
-                },
-                label = { Text("Количество участников") },
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    keyboardType = KeyboardType.Number
-                ),
-                modifier = Modifier.fillMaxWidth()
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(all = 2.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                //verticalAlignment = Alignment.CenterVertically
+            ) {
+                OutlinedTextField(
+                    value = numberParticipants.toString(),
+                    onValueChange = {
+                        val num = it.toIntOrNull() ?: 1
+                        numberParticipants = num
+                    },
+                    label = { Text("Количество участников") },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Number
+                    ),
+                    modifier = Modifier.width(200.dp)
+                )
+                TextButton(onClick = { /* логика фото */ }) {
+                    Text("+Добавить фото", fontSize = 16.sp)
+                }
+            }
 
             // Таблица товаров
-            // Заголовки
             Row(
                 modifier = Modifier.fillMaxWidth().padding(all = 2.dp),
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                horizontalArrangement = Arrangement.SpaceBetween
 
             ) {
-                Text("Название", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-                Text("Количество", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+                Text("Название", modifier = Modifier.width(100.dp).height(40.dp), fontWeight = FontWeight.Bold)
+                Text("Кол-во", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
                 Text("Цена", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
                 Text("Условие", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
 
             }
 
-            // Список товаров
-            products.forEach { product ->
-                val productState = remember { mutableStateOf(product) }
-                ProductRow(product = productState, participants = participants)
+            products.forEachIndexed { index, product ->
+                ProductRow(
+                    product = product,
+                    index = index,
+                    onUpdate = { idx, updatedProduct -> products[idx] = updatedProduct },
+                    participants = participants
+                )
             }
 
-            // Кнопка рассчитать или сохранить
+            // Кнопка "Добавить товар" слева внизу
+            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
+                TextButton(
+                    onClick = {
+                        products.add(Product(
+                            title = "",
+                            condition = participants.map { ConditionItem(it.name, false) },
+                            price = 0.0,
+                            quantity = 0
+                        ))
+                    }
+                ) {
+                    Text("+Добавить товар", fontSize = 16.sp)
+                }
+            }
+
+
             Button(
                 onClick = {
-                    // Тут  реализовать логику подсчета или сохранения
+                    // Тут  реализовать логику подсчета
                 },
-                modifier = Modifier.fillMaxWidth()
-            ) {
+                modifier = Modifier.fillMaxWidth(),
+
+                ) {
                 Text("Рассчитать")
             }
         }
     }
-
 }
 
+@Composable
+fun ProductRow(
+    product: Product,
+    index: Int,
+    onUpdate: (Int, Product) -> Unit,
+    participants: List<Participant>
+) {
+    val openDialog = remember { mutableStateOf(false) }
+    val snackbarHostState = remember { SnackbarHostState() }
 
-// Модель товара
-data class ProductItem(
-    var name: String = "",
-    var participantSelected: String = "",
-    var isChecked: Boolean = false
-)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(all = 2.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Top
+    ) {
+        OutlinedTextField(
+            value = product.title,
+            onValueChange = {
+//                if (product != null)
+//                {
+//
+//                }
+//                else
+//                {
+                onUpdate(index, product.copy(title = it))
+//                }
+            },
+            modifier = Modifier.width(100.dp).height(60.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next)
 
+        )
+        OutlinedTextField(
+            value = product.quantity.toString(),
+            onValueChange = { newValue ->
+                val qty = newValue.toInt()
+                onUpdate(index, product.copy(quantity = qty))
+            },
+            modifier = Modifier.width(50.dp).height(60.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+
+            )
+        OutlinedTextField(
+            value = product.price.toString(),
+            onValueChange = { newValue ->
+                val price = newValue.toDoubleOrNull()
+                onUpdate(index, product.copy(price = price ?: 0.0))
+            },
+            modifier = Modifier.width(70.dp).height(60.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+
+            )
+        Button(onClick = { openDialog.value = true }) {
+            Text("Усл.", fontSize = 14.sp)
+        }
+
+        // Диалог условий внутри Row
+        if (openDialog.value) {
+            val currentConditions = product.condition.toMutableList()
+
+            AlertDialog(
+                onDismissRequest = { openDialog.value = false },
+                title = { Text("Условие для товара") },
+                text = {
+                    Column {
+                        participants.forEach { participant ->
+                            val idx = currentConditions.indexOfFirst { it.participantName == participant.name }
+                            val conditionItem = if (idx >= 0) currentConditions[idx]
+                            else ConditionItem(participant.name, false)
+
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(participant.name, modifier = Modifier.weight(1f))
+                                Checkbox(
+                                    checked = conditionItem.isChecked,
+                                    onCheckedChange = { isChecked ->
+                                        val updated = conditionItem.copy(isChecked = isChecked)
+                                        if (idx >= 0) currentConditions[idx] = updated
+                                        else currentConditions.add(updated)
+                                        onUpdate(index, product.copy(condition = currentConditions.toList()))
+                                    }
+                                )
+                            }
+                        }
+                    }
+                },
+                confirmButton = {
+                    Button(onClick = { openDialog.value = false }) {
+                        Text("ОК")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { openDialog.value = false }) {
+                        Text("Отмена")
+                    }
+                }
+            )
+        }
+    }
+}
