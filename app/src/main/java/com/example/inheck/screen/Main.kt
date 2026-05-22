@@ -1,7 +1,10 @@
 package com.example.inheck.screen
 import android.annotation.SuppressLint
+import android.icu.text.ListFormatter
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,8 +36,12 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.inheck.data.entity.Buy
 import com.example.inheck.navigation.Screen
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -42,6 +49,7 @@ import com.example.inheck.navigation.Screen
 fun Main(
     onNavigateToEditBuy: () -> Unit,
     onNavigateToReadBuy: () -> Unit,
+    purchases: List<Buy>
 ){
     Scaffold (
         floatingActionButton = {
@@ -55,7 +63,6 @@ fun Main(
                         shape = RoundedCornerShape(16.dp),
                         width = 2.dp
                     )
-
             ){
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
@@ -67,18 +74,73 @@ fun Main(
             modifier = Modifier
                 .padding(paddingValues)
         ) {
-            item {
-                Button(onClick = onNavigateToReadBuy) {
-                    Text("Перейти к ReadBuy")
+            for (pur in purchases){
+                item {
+                    ButtonBuy(onNavigateToReadBuy, pur.date, pur.numberParticipants, pur.amount)
                 }
             }
+
         }
     }
 }
 @Composable
 fun ButtonBuy(
+    onNavigateToReadBuy: () -> Unit,
+    date: LocalDateTime,
+    numberParticipants: Int,
+    amount: Double
+){
+    Button(
+        onClick = onNavigateToReadBuy,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(3.dp),
+//        border = BorderStroke(2.dp, Color(0xFF4d4d4d)),
+        shape = RoundedCornerShape(16.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF0D47A1)
+        )
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 13.dp)
+        ){
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ){
+                Box {
+                    Text(
+                        text = date.format(DateTimeFormatter.ofPattern("Дата dd.MM.uuuu")).toString(),
+                        fontSize = 18.sp
+                    )
+                }
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                ){
+                    Text(
+                        text = date.format(DateTimeFormatter.ofPattern(" Время HH:mm")).toString(),
+                        fontSize = 18.sp,
+                        textAlign = TextAlign.Right
+                    )
+                }
 
-){}
+            }
+
+            Text(
+                text = "Количество участников "+numberParticipants.toString(),
+                fontSize = 16.sp
+            )
+            Text(
+                text = "Сумма "+amount.toString(),
+                fontSize = 16.sp
+            )
+        }
+    }
+}
 
 @Preview
 @Composable
@@ -86,5 +148,6 @@ fun PreviewMain(){
     Main(
         onNavigateToEditBuy = {},
         onNavigateToReadBuy =  {},
+        purchases = listOf()
     )
 }
