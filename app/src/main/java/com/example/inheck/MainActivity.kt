@@ -13,10 +13,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-//import com.example.inheck.navigation.MainApp
+import com.example.inheck.navigation.MainApp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.example.inheck.data.entity.Participant
 import com.example.inheck.navigation.MainApp

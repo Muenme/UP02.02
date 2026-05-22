@@ -36,47 +36,47 @@
 22    </queries>
 23
 24    <application
-24-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
+24-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
 25        android:allowBackup="true"
-25-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:6:9-35
+25-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:6:9-35
 26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 26-->[androidx.core:core:1.16.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\466b7bc47160d265d11d511f5e783d4f\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 27        android:dataExtractionRules="@xml/data_extraction_rules"
-27-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:7:9-65
+27-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:7:9-65
 28        android:debuggable="true"
 29        android:extractNativeLibs="false"
 30        android:fullBackupContent="@xml/backup_rules"
-30-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:8:9-54
+30-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:8:9-54
 31        android:icon="@mipmap/ic_launcher"
-31-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:9:9-43
+31-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:9:9-43
 32        android:label="@string/app_name"
-32-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:10:9-41
+32-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:10:9-41
 33        android:roundIcon="@mipmap/ic_launcher_round"
-33-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:11:9-54
+33-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:11:9-54
 34        android:supportsRtl="true"
-34-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:12:9-35
+34-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:12:9-35
 35        android:testOnly="true"
 36        android:theme="@style/Theme.InСheck" >
-36-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
+36-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
 37        <activity
-37-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
+37-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
 38            android:name="com.example.inheck.MainActivity"
-38-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
+38-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
 39            android:exported="true"
-39-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
+39-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
 40            android:label="@string/app_name"
-40-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
+40-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
 41            android:theme="@style/Theme.InСheck" >
-41-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
+41-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
 42            <intent-filter>
-42-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
+42-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
 43                <action android:name="android.intent.action.MAIN" />
-43-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
-43-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
+43-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
+43-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
 44
 45                <category android:name="android.intent.category.LAUNCHER" />
-45-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-45-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+45-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+45-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
 46            </intent-filter>
 47        </activity>
 48
@@ -151,8 +151,8 @@
 85-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
 85-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
 86                <category android:name="android.intent.category.LAUNCHER" />
-86-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-86-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+86-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+86-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
 87            </intent-filter>
 88        </activity>
 89        <activity
@@ -167,8 +167,8 @@
 93-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
 93-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
 94                <category android:name="android.intent.category.LAUNCHER" />
-94-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-94-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+94-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+94-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
 95            </intent-filter>
 96        </activity>
 97        <activity
@@ -183,8 +183,8 @@
 101-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
 101-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
 102                <category android:name="android.intent.category.LAUNCHER" />
-102-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-102-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+102-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+102-->D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
 103            </intent-filter>
 104        </activity>
 105        <activity

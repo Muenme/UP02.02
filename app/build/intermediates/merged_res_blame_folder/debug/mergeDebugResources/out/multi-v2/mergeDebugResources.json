@@ -3669,6 +3669,40 @@
             "outputFile": "com.example.inheck.app-debug-50:/values_values.arsc.flat",
             "map": [
                 {
+                    "source": "D:\\Panasetskaya\\UP02.02\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "59",
+                        "endColumns": "84",
+                        "endOffsets": "139"
+                    },
+                    "to": {
+                        "startLines": "333",
+                        "startColumns": "4",
+                        "startOffsets": "18783",
+                        "endColumns": "83",
+                        "endOffsets": "18862"
+                    }
+                },
+                {
+                    "source": "D:\\Panasetskaya\\UP02.02\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "44",
+                        "endOffsets": "57"
+                    },
+                    "to": {
+                        "startLines": "201",
+                        "startColumns": "4",
+                        "startOffsets": "9843",
+                        "endColumns": "44",
+                        "endOffsets": "9883"
+                    }
+                },
+                {
                     "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\fae4042681dd95b3012828960e3d72f5\\transformed\\core-1.7.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "4,11",
@@ -3868,23 +3902,6 @@
                     }
                 },
                 {
-                    "source": "D:\\Zybina\\UP02.02\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "17",
-                        "endColumns": "44",
-                        "endOffsets": "57"
-                    },
-                    "to": {
-                        "startLines": "201",
-                        "startColumns": "4",
-                        "startOffsets": "9843",
-                        "endColumns": "44",
-                        "endOffsets": "9883"
-                    }
-                },
-                {
                     "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\548697ae3aa23055aae54480aeb8fb68\\transformed\\transition-1.6.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
@@ -3916,23 +3933,6 @@
                         "startOffsets": "9374",
                         "endColumns": "49",
                         "endOffsets": "9419"
-                    }
-                },
-                {
-                    "source": "D:\\Zybina\\UP02.02\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "59",
-                        "endColumns": "84",
-                        "endOffsets": "139"
-                    },
-                    "to": {
-                        "startLines": "333",
-                        "startColumns": "4",
-                        "startOffsets": "18783",
-                        "endColumns": "83",
-                        "endOffsets": "18862"
                     }
                 },
                 {
@@ -3970,6 +3970,23 @@
                     }
                 },
                 {
+                    "source": "D:\\Panasetskaya\\UP02.02\\app\\src\\main\\res\\values\\colors.xml",
+                    "from": {
+                        "startLines": "7,2,3,4,5,6,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "293,57,105,153,201,247,336",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "330,99,147,195,241,287,373"
+                    },
+                    "to": {
+                        "startLines": "75,80,81,82,83,84,85",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "2488,2793,2840,2887,2934,2979,3024",
+                        "endColumns": "41,46,46,46,44,44,41",
+                        "endOffsets": "2525,2835,2882,2929,2974,3019,3061"
+                    }
+                },
+                {
                     "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\f0d97159f4a0d01a2416b6ff49286b72\\transformed\\savedstate-release\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -3984,23 +4001,6 @@
                         "startOffsets": "9320",
                         "endColumns": "53",
                         "endOffsets": "9369"
-                    }
-                },
-                {
-                    "source": "D:\\Zybina\\UP02.02\\app\\src\\main\\res\\values\\colors.xml",
-                    "from": {
-                        "startLines": "7,2,3,4,5,6,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "293,57,105,153,201,247,336",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "330,99,147,195,241,287,373"
-                    },
-                    "to": {
-                        "startLines": "75,80,81,82,83,84,85",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "2488,2793,2840,2887,2934,2979,3024",
-                        "endColumns": "41,46,46,46,44,44,41",
-                        "endOffsets": "2525,2835,2882,2929,2974,3019,3061"
                     }
                 },
                 {

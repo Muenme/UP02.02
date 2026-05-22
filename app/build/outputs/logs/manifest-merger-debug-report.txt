@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [androidx.test.espresso:espresso-core:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\e4ccaddf8b9e9f8cea6e27d7430b3762\transformed\espresso-core-3.7.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.room:room-ktx:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\8d3c2781159e200ccfee805012906437\transformed\room-ktx-2.6.1\AndroidManifest.xml:17:1-22:12
@@ -80,18 +80,18 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Andr
 MERGED from [androidx.print:print:1.0.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\bc88b2b92d75cb605c09ee1e4d6b099c\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\a09dff28cd6a335ecbb775b5802a39f2\transformed\espresso-idling-resource-3.7.0\AndroidManifest.xml:17:1-24:12
 	package
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:5:5-25:19
 MERGED from [androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:22:5-27:19
@@ -117,49 +117,49 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\AndroidS
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\25ccbcc02c337b0318a1e057c618ab80\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\25ccbcc02c337b0318a1e057c618ab80\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 	android:extractNativeLibs
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.16.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\466b7bc47160d265d11d511f5e783d4f\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:10:9-41
 	android:fullBackupContent
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:8:9-54
 	android:roundIcon
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:11:9-54
 	android:icon
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
 	android:dataExtractionRules
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:7:9-65
 activity#com.example.inheck.MainActivity
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
 	android:label
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
 	android:exported
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
 	android:theme
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
 	android:name
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
 action#android.intent.action.MAIN
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
 	android:name
-		ADDED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
 uses-sdk
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
-INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
+INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 MERGED from [androidx.test.espresso:espresso-core:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\e4ccaddf8b9e9f8cea6e27d7430b3762\transformed\espresso-core-3.7.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test.espresso:espresso-core:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\e4ccaddf8b9e9f8cea6e27d7430b3762\transformed\espresso-core-3.7.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
@@ -311,9 +311,9 @@ MERGED from [androidx.print:print:1.0.0] C:\AndroidSettings\Gradle\caches\8.13\t
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\a09dff28cd6a335ecbb775b5802a39f2\transformed\espresso-idling-resource-3.7.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.test.espresso:espresso-idling-resource:3.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\a09dff28cd6a335ecbb775b5802a39f2\transformed\espresso-idling-resource-3.7.0\AndroidManifest.xml:20:5-22:41
 	android:targetSdkVersion
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml
+		INJECTED from D:\Panasetskaya\UP02.02\app\src\main\AndroidManifest.xml
 service#androidx.room.MultiInstanceInvalidationService
 ADDED from [androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
 	android:exported
