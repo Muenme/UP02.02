@@ -51,6 +51,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextIndent
+import androidx.compose.ui.text.style.TextOverflow
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -157,14 +160,38 @@ fun EditBuy(
 
             // Таблица товаров
             Row(
-                modifier = Modifier.fillMaxWidth().padding(all = 2.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth()/*.padding(all = 2.dp)*/,
+                horizontalArrangement = Arrangement.Start
 
             ) {
-                Text("Название", modifier = Modifier.width(100.dp).height(40.dp), fontWeight = FontWeight.Bold)
-                Text("Кол-во", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-                Text("Цена", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-                Text("Условие", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
+                Text("Название",
+                    modifier = Modifier.weight(1f),
+
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(
+                        textIndent = TextIndent(30.sp, 0.sp)
+                    )
+                )
+                Text("Кол-во", modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(
+                        textIndent = TextIndent(50.sp, 0.sp)
+                    )
+                )
+                Text("Цена", modifier = Modifier.weight(1f),
+
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(
+                        textIndent = TextIndent(45.sp, 0.sp)
+                    )
+                )
+                Text("Условие", modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(
+                        textIndent = TextIndent(20.sp, 0.sp)
+                    )
+                )
+
 
             }
 
@@ -236,8 +263,9 @@ fun ProductRow(
                 onUpdate(index, product.copy(title = it))
 //                }
             },
-            modifier = Modifier.width(100.dp).height(60.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next)
+            modifier = Modifier.width(150.dp).height(50.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
+            //overflow = TextOverflow.Visible
 
         )
         OutlinedTextField(
@@ -246,7 +274,7 @@ fun ProductRow(
                 val qty = newValue.toInt()
                 onUpdate(index, product.copy(quantity = qty))
             },
-            modifier = Modifier.width(50.dp).height(60.dp),
+            modifier = Modifier.width(50.dp).height(50.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
 
             )
@@ -256,7 +284,7 @@ fun ProductRow(
                 val price = newValue.toDoubleOrNull()
                 onUpdate(index, product.copy(price = price ?: 0.0))
             },
-            modifier = Modifier.width(70.dp).height(60.dp),
+            modifier = Modifier.width(70.dp).height(50.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 
             )

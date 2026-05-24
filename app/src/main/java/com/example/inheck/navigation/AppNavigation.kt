@@ -6,7 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Participant
+import com.example.inheck.data.entity.Product
 import com.example.inheck.screen.EditBuy
 import com.example.inheck.screen.Main
 import com.example.inheck.screen.ReadBuy
@@ -38,8 +40,25 @@ fun AppNavigation(
         }
         composable(Screen.ReadBuy.route) {
             ReadBuy(
-                onBack = { navController.navigateUp() },
-                toEditBuy = {navController.navigate(Screen.EditBuy.route)}
+                onBackClick = { navController.navigateUp() },
+                onEditClick = {navController.navigate(Screen.EditBuy.route)},
+                date = "24.05.2026 14:30",
+                numberParticipants = 2,
+                participants = listOf(
+                    Participant(id = 0, name = "Аня", check = ""),
+                    Participant(id = 1, name = "Боря", check = "")
+                ),
+                products = listOf(
+                    Product(
+                        title = "Молоко",
+                        price = 85.50,
+                        quantity = 2,
+                        condition = listOf(
+                            ConditionItem("Аня", true),
+                            ConditionItem("Боря", false)
+                        )
+                    )
+                )
             )
         }
 
