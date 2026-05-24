@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.inheck.navigation.MainApp
-import com.example.inheck.screen.ReceiptScannerScreen
 import com.example.inheck.ui.theme.InСheckTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,8 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             InСheckTheme {
-//                MainApp(navController = rememberNavController())\
-                ReceiptScannerScreen()
+                MainApp(navController = rememberNavController())
             }
         }
     }

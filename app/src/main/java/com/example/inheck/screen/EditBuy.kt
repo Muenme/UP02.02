@@ -51,6 +51,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.LocalContext
+import com.example.inheck.screen.ReceiptScanner
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -86,6 +91,37 @@ fun EditBuy(
 
 
     val scope = rememberCoroutineScope()
+
+    val context = LocalContext.current
+    val scanner = remember { ReceiptScanner(context) }
+
+// Launcher для выбора фото
+    val photoLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            isLoading = true
+            scanner.scanReceipt(
+                imageUri = it,
+                participants = participants,
+                onSuccess = { scannedProducts ->
+                    // Убираем первый пустой product если он пустой
+                    if (products.size == 1 &&
+                        products[0].title.isEmpty() &&
+                        products[0].price == 0.0
+                    ) {
+                        products.clear()
+                    }
+                    // Добавляем найденные товары
+                    products.addAll(scannedProducts)
+                    isLoading = false
+                },
+                onError = { error ->
+                    isLoading = false
+                }
+            )
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -150,8 +186,14 @@ fun EditBuy(
                     ),
                     modifier = Modifier.width(200.dp)
                 )
-                TextButton(onClick = { /* логика фото */ }) {
-                    Text("+Добавить фото", fontSize = 16.sp)
+                TextButton(
+                    onClick = { photoLauncher.launch("image/*") },
+                    enabled = !isLoading
+                ) {
+                    Text(
+                        text = if (isLoading) "Загрузка..." else "+Добавить фото",
+                        fontSize = 16.sp
+                    )
                 }
             }
 

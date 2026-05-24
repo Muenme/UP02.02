@@ -1,183 +1,152 @@
 package com.example.inheck.screen
 
+import android.content.Context
 import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import com.example.inheck.OCR.ReceiptData
-import com.example.inheck.OCR.ReceiptItem
-import com.example.inheck.OCR.ReceiptScanner
+import com.google.mlkit.vision.common.InputImage
+import com.google.mlkit.vision.text.TextRecognition
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.example.inheck.data.entity.ConditionItem
+import com.example.inheck.data.entity.Participant
+import com.example.inheck.data.entity.Product
+import java.io.IOException
 
-@Composable
-fun ReceiptScannerScreen() {
-    var receiptData by remember { mutableStateOf<ReceiptData?>(null) }
-    var isLoading by remember { mutableStateOf(false) }
-    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
-    var errorMessage by remember { mutableStateOf<String?>(null) }
+class ReceiptScanner(private val context: Context) {
 
-    val context = LocalContext.current
-    val scanner = remember { ReceiptScanner(context) }
+    private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri: Uri? ->
-        uri?.let {
-            selectedImageUri = it
-            isLoading = true
-            errorMessage = null
-
-            scanner.scanReceipt(
-                imageUri = it,
-                onSuccess = { data ->
-                    receiptData = data
-                    isLoading = false
-                },
-                onError = { error ->
-                    errorMessage = error.message
-                    isLoading = false
-                }
-            )
-        }
-    }
-
-    Scaffold(
-        floatingActionButton = {
-            FloatingActionButton(onClick = { launcher.launch("image/*") }) {
-                Icon(Icons.Filled.Add, contentDescription = "Выбрать фото")
-            }
-        }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            // Превью фото
-            selectedImageUri?.let { uri ->
-                AsyncImage(
-                    model = uri,
-                    contentDescription = "Фото чека",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp)
-                        .padding(bottom = 16.dp)
-                )
-            }
-
-            // Индикатор загрузки
-            if (isLoading) {
-                CircularProgressIndicator()
-                Text("Распознаю чек...", modifier = Modifier.padding(top = 8.dp))
-            }
-
-            // Ошибка
-            errorMessage?.let {
-                Text(
-                    text = "Ошибка: $it",
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.padding(8.dp)
-                )
-            }
-
-            // Результаты
-            receiptData?.let { data ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 16.dp)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(
-                            text = "Найдено товаров: ${data.items.size}",
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                        Text(
-                            text = "Общая сумма: ${"%.2f".format(data.totalSum)} ₽",
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-                }
-
-                LazyColumn {
-                    items(data.items) { item ->
-                        ReceiptItemCard(item)
-                    }
-
-                    // Показать распознанный текст
-                    item {
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(top = 16.dp)
-                        ) {
-                            Column(modifier = Modifier.padding(16.dp)) {
-                                Text(
-                                    text = "Распознанный текст:",
-                                    style = MaterialTheme.typography.titleSmall,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(
-                                    text = data.rawText,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    modifier = Modifier.padding(top = 8.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@Composable
-fun ReceiptItemCard(item: ReceiptItem) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 4.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    fun scanReceipt(
+        imageUri: Uri,
+        participants: List<Participant>,
+        onSuccess: (List<Product>) -> Unit,
+        onError: (Exception) -> Unit
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = item.name,
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium
-                )
-                if (item.quantity > 1.0) {
-                    Text(
-                        text = "${item.quantity} × ${"%.2f".format(item.price)} ₽",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+        try {
+            val image = InputImage.fromFilePath(context, imageUri)
+
+            recognizer.process(image)
+                .addOnSuccessListener { visionText ->
+                    val products = parseReceiptText(visionText.text, participants)
+                    onSuccess(products)
+                }
+                .addOnFailureListener { e ->
+                    onError(e)
+                }
+        } catch (e: IOException) {
+            onError(e)
+        }
+    }
+
+    private fun parseReceiptText(
+        text: String,
+        participants: List<Participant>
+    ): List<Product> {
+
+        val products = mutableListOf<Product>()
+        val lines = text.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
+
+        // Паттерны
+        val pricePattern = Regex("""(\d+)[.,](\d{2})""")
+        val quantityPattern = Regex("""(\d+[.,]?\d*)\s*[хxXх*×]\s*(\d+[.,]\d{2})""")
+
+        // Стоп-слова — эти строки пропускаем
+        val stopWords = listOf(
+            "итого", "сумма", "скидка", "касса", "кассир",
+            "чек", "дата", "время", "спасибо", "сдача",
+            "налог", "ндс", "инн", "огрн", "фн", "фд", "фп",
+            "наличными", "безналичными", "подытог", "принято",
+            "перекрёсток", "перекресток", "пятёрочка", "пятерочка",
+            "горячая", "кассовый", "магнит", "итог", "округление",
+            "скккой", "цена", "кол-во"
+        )
+
+        var i = 0
+        while (i < lines.size) {
+            val line = lines[i]
+
+            // Пропускаем стоп-слова
+            if (stopWords.any { line.lowercase().contains(it) }) {
+                i++
+                continue
+            }
+
+            // Формат Перекрёстка: "1: 4112685 SM.MED.Салфетки дезинфицир.20"
+            // следующая строка: "57.90    57.90 *    1    57.90"
+            val crossroadPattern = Regex("""^\d+:\s*\d+\s+(.+)$""")
+            val crossroadMatch = crossroadPattern.find(line)
+
+            if (crossroadMatch != null) {
+                val name = crossroadMatch.groupValues[1].trim()
+                val nextLine = lines.getOrNull(i + 1) ?: ""
+
+                // Ищем количество и цену в следующей строке
+                val numbers = pricePattern.findAll(nextLine).map {
+                    it.value.replace(",", ".").toDouble()
+                }.toList()
+
+                val quantityInNext = Regex("""\s+(\d+)\s+""").find(nextLine)
+                val qty = quantityInNext?.groupValues?.get(1)?.toIntOrNull() ?: 1
+                val price = numbers.firstOrNull() ?: 0.0
+
+                if (name.isNotEmpty() && price > 0) {
+                    products.add(
+                        Product(
+                            title = name,
+                            price = price,
+                            quantity = qty,
+                            condition = participants.map { ConditionItem(it.name, false) }
+                        )
+                    )
+                    i += 2 // пропускаем следующую строку с ценами
+                    continue
+                }
+            }
+
+            // Формат с количеством в строке: "Молоко 2 х 85.50"
+            val qtyMatch = quantityPattern.find(line)
+            if (qtyMatch != null) {
+                val qty = qtyMatch.groupValues[1].replace(",", ".").toDoubleOrNull()?.toInt() ?: 1
+                val price = qtyMatch.groupValues[2].replace(",", ".").toDoubleOrNull() ?: 0.0
+                val name = line.substringBefore(qtyMatch.value).trim()
+
+                if (name.isNotEmpty() && price > 0) {
+                    products.add(
+                        Product(
+                            title = name,
+                            price = price,
+                            quantity = qty,
+                            condition = participants.map { ConditionItem(it.name, false) }
+                        )
+                    )
+                    i++
+                    continue
+                }
+            }
+
+            // Обычный формат: "Хлеб белый    45.00"
+            val prices = pricePattern.findAll(line).map {
+                it.value.replace(",", ".").toDouble()
+            }.toList()
+
+            if (prices.isNotEmpty()) {
+                val name = line.replace(pricePattern, "")
+                    .replace(Regex("""[*хxXх×]"""), "")
+                    .trim()
+
+                if (name.length > 2 && !name.matches(Regex("""\d+"""))) {
+                    products.add(
+                        Product(
+                            title = name,
+                            price = prices.last(),
+                            quantity = 1,
+                            condition = participants.map { ConditionItem(it.name, false) }
+                        )
                     )
                 }
             }
-            Text(
-                text = "${"%.2f".format(item.total)} ₽",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
-            )
+
+            i++
         }
+
+        return products
     }
 }
