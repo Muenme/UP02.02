@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.inheck.app-mergeDebugResources-50:/values-lv/values-lv.xml",
+            "outputFile": "com.example.inheck.app-mergeDebugResources-53:/values-lv/values-lv.xml",
             "map": [
                 {
                     "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\f28deeb174f1e838eeff05e8db276b6b\\transformed\\foundation\\res\\values-lv\\values-lv.xml",

@@ -52,7 +52,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.ui.platform.LocalContext
+import com.example.inheck.file.DataStorage
+import com.example.inheck.screen.ReceiptScanner
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.text.style.TextOverflow
 
@@ -104,6 +112,11 @@ fun EditBuy(
 
     var numberParticipants by remember { mutableStateOf(initialParticipantsCount) }
 
+    val context = LocalContext.current
+    val storage = remember { DataStorage(context) }
+
+
+    // Инициализируем список: если пришёл не пустой – берём его, иначе – один пустой продукт
     // Нормализуем переданные продукты
     val normalizedInitialProducts = remember(initialProducts, initialParticipants) {
         initialProducts.map { product ->
@@ -181,6 +194,38 @@ fun EditBuy(
     }
 
     var isLoading by remember { mutableStateOf(false) }
+
+
+
+    val scanner = remember { ReceiptScanner(context) }
+
+// Launcher для выбора фото
+    val photoLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            isLoading = true
+            scanner.scanReceipt(
+                imageUri = it,
+                participants = participants,
+                onSuccess = { scannedProducts ->
+                    // Убираем первый пустой product если он пустой
+                    if (products.size == 1 &&
+                        products[0].title.isEmpty() &&
+                        products[0].price == 0.0
+                    ) {
+                        products.clear()
+                    }
+                    // Добавляем найденные товары
+                    products.addAll(scannedProducts)
+                    isLoading = false
+                },
+                onError = { error ->
+                    isLoading = false
+                }
+            )
+        }
+    }
     val scope = rememberCoroutineScope()
 
     Scaffold(
@@ -193,7 +238,26 @@ fun EditBuy(
                 ),
                 actions = {
                     TextButton(
-                        onClick = { onBackClick() },
+                        onClick = {
+                            scope.launch {
+                                isLoading = true
+
+                                // Создаём Buy
+                                val buy = Buy(
+                                    date = LocalDateTime.now(),
+                                    numberParticipants = numberParticipants,
+                                    productId = emptyList(), // заполнится в addBuy
+                                    participantId = 0, // укажите нужный id
+                                    amount = products.sumOf { it.price * it.quantity }
+                                )
+
+                                // Сохраняем (products автоматически сохранятся внутри)
+                                storage.addBuy(buy, products.toList())
+
+                                isLoading = false
+                                onBackClick()
+                            }
+                        },
                         enabled = !isLoading
                     ) {
                         Text(
@@ -209,6 +273,7 @@ fun EditBuy(
                         Text("Отмена", color = Color.White, fontSize = 16.sp)
                     }
                 }
+
             )
         }
     ) { paddingValues ->
@@ -229,6 +294,7 @@ fun EditBuy(
                     .fillMaxWidth()
                     .padding(all = 2.dp),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
+                //verticalAlignment = Alignment.CenterVertically
             ) {
                 OutlinedTextField(
                     value = numberParticipants.toString(),
@@ -242,32 +308,59 @@ fun EditBuy(
                     ),
                     modifier = Modifier.width(200.dp)
                 )
-                TextButton(onClick = { /* логика фото */ }) {
-                    Text("+Добавить фото", fontSize = 16.sp)
+                TextButton(
+                    onClick = { photoLauncher.launch("image/*") },
+                    enabled = !isLoading
+                ) {
+                    Text(
+                        text = if (isLoading) "Загрузка..." else "+Добавить фото",
+                        fontSize = 16.sp
+                    )
                 }
             }
 
-            // Таблица товаров
+            // Таблица товаров - заголовки
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Start
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 2.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Название",
-                    modifier = Modifier.weight(1f),
+                // Название - такая же ширина как поле
+                Text(
+                    "Название",
+                    modifier = Modifier.width(110.dp),
                     fontWeight = FontWeight.Bold,
-                    style = TextStyle(textIndent = TextIndent(30.sp, 0.sp))
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
                 )
-                Text("Кол-во", modifier = Modifier.weight(1f),
+                // Кол-во - такая же ширина как поле
+                Text(
+                    "Кол-во",
+                    modifier = Modifier.width(55.dp),
                     fontWeight = FontWeight.Bold,
-                    style = TextStyle(textIndent = TextIndent(50.sp, 0.sp))
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
+
                 )
-                Text("Цена", modifier = Modifier.weight(1f),
+                // Цена - такая же ширина как поле
+                Text(
+                    "Цена",
+                    modifier = Modifier.width(75.dp),
                     fontWeight = FontWeight.Bold,
-                    style = TextStyle(textIndent = TextIndent(45.sp, 0.sp))
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
+
                 )
-                Text("Условие", modifier = Modifier.weight(1f),
+                // Условие - такая же ширина как кнопка
+                Text(
+                    "Условие",
+                    modifier = Modifier.width(65.dp),
                     fontWeight = FontWeight.Bold,
-                    style = TextStyle(textIndent = TextIndent(20.sp, 0.sp))
+                    fontSize = 14.sp,
+                    textAlign = TextAlign.Center
+
                 )
             }
 
@@ -297,6 +390,7 @@ fun EditBuy(
                 }
             }
 
+
             Button(
                 onClick = { /* логика подсчета */ },
                 modifier = Modifier.fillMaxWidth()
@@ -304,6 +398,130 @@ fun EditBuy(
                 Text("Рассчитать")
             }
         }
+    }
+}
+
+@Composable
+fun ProductRoww(
+    product: Product,
+    index: Int,
+    onUpdate: (Int, Product) -> Unit,
+    participants: List<Participant>
+) {
+    val openDialog = remember { mutableStateOf(false) }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 2.dp, horizontal = 2.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // Название - 110.dp
+        OutlinedTextField(
+            value = product.title,
+            onValueChange = { onUpdate(index, product.copy(title = it)) },
+            modifier = Modifier
+                .width(110.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true
+        )
+
+        // Кол-во - 55.dp
+        OutlinedTextField(
+            value = product.quantity.toString(),
+            onValueChange = { newValue ->
+                val qty = newValue.toIntOrNull() ?: 0
+                onUpdate(index, product.copy(quantity = qty))
+            },
+            modifier = Modifier
+                .width(55.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true
+        )
+
+        // Цена - 75.dp
+        OutlinedTextField(
+            value = product.price.toString(),
+            onValueChange = { newValue ->
+                val price = newValue.toDoubleOrNull()
+                onUpdate(index, product.copy(price = price ?: 0.0))
+            },
+            modifier = Modifier
+                .width(75.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Decimal
+            ),
+            singleLine = true
+        )
+
+        // Кнопка условие - 65.dp
+        Button(
+            onClick = { openDialog.value = true },
+            modifier = Modifier.width(65.dp),
+            contentPadding = PaddingValues(0.dp)
+        ) {
+            Text("Усл.", fontSize = 13.sp)
+        }
+    }
+
+    // Диалог вынесли из Row
+    if (openDialog.value) {
+        val currentConditions = product.condition.toMutableList()
+
+        AlertDialog(
+            onDismissRequest = { openDialog.value = false },
+            title = { Text("Условие для товара") },
+            text = {
+                Column {
+                    participants.forEach { participant ->
+                        val idx = currentConditions.indexOfFirst {
+                            it.participantName == participant.name
+                        }
+                        val conditionItem = if (idx >= 0) currentConditions[idx]
+                        else ConditionItem(participant.name, false)
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(participant.name, modifier = Modifier.weight(1f))
+                            Checkbox(
+                                checked = conditionItem.isChecked,
+                                onCheckedChange = { isChecked ->
+                                    val updated = conditionItem.copy(isChecked = isChecked)
+                                    if (idx >= 0) currentConditions[idx] = updated
+                                    else currentConditions.add(updated)
+                                    onUpdate(
+                                        index,
+                                        product.copy(condition = currentConditions.toList())
+                                    )
+                                }
+                            )
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                Button(onClick = { openDialog.value = false }) {
+                    Text("ОК")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { openDialog.value = false }) {
+                    Text("Отмена")
+                }
+            }
+        )
     }
 }
 
@@ -321,50 +539,66 @@ fun ProductRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(all = 2.dp),
+            .padding(vertical = 2.dp, horizontal = 2.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Top
+        verticalAlignment = Alignment.CenterVertically
     ) {
+        // Название - 110.dp
         OutlinedTextField(
             value = product.title,
-            onValueChange = {
-//                if (product != null)
-//                {
-//
-//                }
-//                else
-//                {
-                onUpdate(index, product.copy(title = it))
-//                }
-            },
-            modifier = Modifier.width(150.dp).height(50.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
-            //overflow = TextOverflow.Visible
-
+            onValueChange = { onUpdate(index, product.copy(title = it)) },
+            modifier = Modifier
+                .width(110.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true
         )
+
+        // Кол-во - 55.dp
         OutlinedTextField(
             value = product.quantity.toString(),
             onValueChange = { newValue ->
-                val qty = newValue.toInt()
+                val qty = newValue.toIntOrNull() ?: 0
                 onUpdate(index, product.copy(quantity = qty))
             },
-            modifier = Modifier.width(50.dp).height(50.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
+            modifier = Modifier
+                .width(55.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
+            ),
+            singleLine = true
+        )
 
-            )
+        // Цена - 75.dp
         OutlinedTextField(
             value = product.price.toString(),
             onValueChange = { newValue ->
                 val price = newValue.toDoubleOrNull()
                 onUpdate(index, product.copy(price = price ?: 0.0))
             },
-            modifier = Modifier.width(70.dp).height(50.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+            modifier = Modifier
+                .width(75.dp)
+                .height(56.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Decimal
+            ),
+            singleLine = true
+        )
 
-            )
-        Button(onClick = { openDialog.value = true }) {
-            Text("Усл.", fontSize = 14.sp)
+        // Кнопка условие - 65.dp
+        Button(
+            onClick = { openDialog.value = true },
+            modifier = Modifier.width(65.dp),
+            contentPadding = PaddingValues(0.dp)
+        ) {
+            Text("Усл.", fontSize = 13.sp)
         }
+    }
 
         // Диалог условий внутри Row
         if (openDialog.value) {
@@ -421,5 +655,5 @@ fun ProductRow(
             )
         }
     }
-}
+
 

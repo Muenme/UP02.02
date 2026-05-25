@@ -73,4 +73,16 @@ dependencies {
 
     // Navigation
     implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    //Icons
+    implementation("androidx.compose.material:material-icons-core:1.5.4")
+
+    // ML Kit для распознавания текста
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+
+    // Для загрузки и отображения изображений
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
+    //JSON
+    implementation("com.google.code.gson:gson:2.9.1")
 }

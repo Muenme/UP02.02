@@ -1,8 +1,12 @@
 package com.example.inheck.navigation
 
-import android.window.SplashScreen
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -14,21 +18,24 @@ import com.example.inheck.screen.Main
 import com.example.inheck.screen.ReadBuy
 import com.example.inheck.screen.SplashScreen
 import com.example.inheck.data.entity.Product
-import java.time.LocalDateTime
-import java.util.Date
+import com.example.inheck.file.DataStorage
 
 @ExperimentalMaterial3Api
 @Composable
 fun AppNavigation(
     navController: NavHostController
 ) {
+    val context = LocalContext.current
+    val storage = remember { DataStorage(context) }
+    val buys = remember { storage.loadBuys() }
 
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route) {
+
         composable(Screen.Main.route) {
             Main(
                 onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
                 onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
-                purchases = listOf()
+                purchases = buys
             )
         }
         composable(Screen.EditBuy.route) {
