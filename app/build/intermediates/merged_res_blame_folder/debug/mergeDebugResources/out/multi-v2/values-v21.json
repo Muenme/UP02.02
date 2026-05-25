@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.inheck.app-mergeDebugResources-48:/values-v21/values-v21.xml",
+            "outputFile": "com.example.inheck.app-mergeDebugResources-50:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\466b7bc47160d265d11d511f5e783d4f\\transformed\\core-1.16.0\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\8057baed2cb9efb7f67eb22d440f12f3\\transformed\\core-1.16.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\fae4042681dd95b3012828960e3d72f5\\transformed\\core-1.7.0\\res\\values-v21\\values.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\c14581d3f437e4b1ec9ea0380326d9f9\\transformed\\core-1.7.0\\res\\values-v21\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",

@@ -44,6 +44,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -51,6 +52,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextIndent
+import androidx.compose.ui.text.style.TextOverflow
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,32 +63,124 @@ fun EditBuy(
     onBackClick: () -> Unit,
     title: String,
     participants: List<Participant>,
+    initialParticipantsCount: Int = 1,
     initialProducts: List<Product> = emptyList()
 ) {
     val customFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-
     var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
-    var numberParticipants by remember { mutableStateOf(1) }
 
-    // Инициализируем список: если пришёл не пустой – берём его, иначе – один пустой продукт
+    // Формируем начальный список участников на основе количества
+    val initialParticipants = remember(participants, initialParticipantsCount) {
+        if (participants.isNotEmpty()) {
+            // Если передан список имён — используем его
+            if (participants.size >= initialParticipantsCount) {
+                participants.take(initialParticipantsCount)
+            } else {
+                // Дополняем недостающими "УчастникN"
+                val existingNumbers = participants.mapNotNull {
+                    Regex("""Участник(\d+)""").find(it.name)?.groupValues?.get(1)?.toIntOrNull()
+                }
+                val maxNumber = existingNumbers.maxOrNull() ?: 0
+                participants.toMutableList().apply {
+                    for (i in participants.size until initialParticipantsCount) {
+                        add(Participant(id = i, name = "Участник${maxNumber + i - participants.size + 1}", check = ""))
+                    }
+                }
+            }
+        } else {
+            // Создаём участников по умолчанию
+            (0 until initialParticipantsCount).map { index ->
+                Participant(id = index, name = "Участник${index + 1}", check = "")
+            }
+        }
+    }
+
+    // Состояние общего списка участников
+    val participantsState = remember { mutableStateListOf<Participant>() }
+    LaunchedEffect(initialParticipants) {
+        participantsState.clear()
+        participantsState.addAll(initialParticipants)
+    }
+
+    var numberParticipants by remember { mutableStateOf(initialParticipantsCount) }
+
+    // Нормализуем переданные продукты
+    val normalizedInitialProducts = remember(initialProducts, initialParticipants) {
+        initialProducts.map { product ->
+            val newCondition = initialParticipants.map { participant ->
+                val existing = product.condition.find { it.participantName == participant.name }
+                existing ?: ConditionItem(participant.name, false)
+            }
+            product.copy(condition = newCondition)
+        }
+    }
+
+    // Список продуктов в состоянии
     var products = remember {
         mutableStateListOf<Product>().apply {
-            if (initialProducts.isEmpty()) {
+            if (normalizedInitialProducts.isEmpty()) {
                 add(Product(
                     title = "",
-                    condition = participants.map { ConditionItem(it.name, false) },
+                    condition = participantsState.map { ConditionItem(it.name, false) },
                     price = 0.0,
                     quantity = 0
                 ))
             } else {
-                addAll(initialProducts)
+                addAll(normalizedInitialProducts)
+            }
+        }
+    }
+
+    // Синхронизация condition при изменении participantsState
+    fun syncConditions() {
+        for (i in products.indices) {
+            val oldCondition = products[i].condition
+            val newCondition = participantsState.mapIndexed { index, participant ->
+                if (index < oldCondition.size) {
+                    oldCondition[index].copy(participantName = participant.name)
+                } else {
+                    ConditionItem(participant.name, false)
+                }
+            }
+            products[i] = products[i].copy(condition = newCondition)
+        }
+    }
+
+    // Обработчик изменения количества участников
+    fun updateParticipantsCount(newCount: Int) {
+        val currentSize = participantsState.size
+        if (newCount > currentSize) {
+            val maxExistingNumber = participantsState.mapNotNull {
+                Regex("""Участник(\d+)""").find(it.name)?.groupValues?.get(1)?.toIntOrNull()
+            }.maxOrNull() ?: 0
+            for (i in currentSize until newCount) {
+                val newNumber = maxExistingNumber + (i - currentSize + 1)
+                participantsState.add(Participant(id = i, name = "Участник$newNumber", check = ""))
+            }
+        } else if (newCount < currentSize) {
+            repeat(currentSize - newCount) {
+                participantsState.removeAt(participantsState.lastIndex)
+            }
+        }
+        syncConditions()
+        numberParticipants = participantsState.size
+    }
+
+    // Обработчик изменения имени участника
+    fun onParticipantNameChange(index: Int, newName: String) {
+        if (index in participantsState.indices) {
+            val oldName = participantsState[index].name
+            participantsState[index] = participantsState[index].copy(name = newName)
+            for (i in products.indices) {
+                val updatedCondition = products[i].condition.map { item ->
+                    if (item.participantName == oldName) item.copy(participantName = newName) else item
+                }
+                products[i] = products[i].copy(condition = updatedCondition)
             }
         }
     }
 
     var isLoading by remember { mutableStateOf(false) }
-
-
     val scope = rememberCoroutineScope()
 
     Scaffold(
@@ -113,10 +209,7 @@ fun EditBuy(
                         Text("Отмена", color = Color.White, fontSize = 16.sp)
                     }
                 }
-
             )
-
-
         }
     ) { paddingValues ->
         Column(
@@ -136,13 +229,12 @@ fun EditBuy(
                     .fillMaxWidth()
                     .padding(all = 2.dp),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
-                //verticalAlignment = Alignment.CenterVertically
             ) {
                 OutlinedTextField(
                     value = numberParticipants.toString(),
-                    onValueChange = {
-                        val num = it.toIntOrNull() ?: 1
-                        numberParticipants = num
+                    onValueChange = { input ->
+                        val num = input.toIntOrNull() ?: 1
+                        updateParticipantsCount(num.coerceAtLeast(1))
                     },
                     label = { Text("Количество участников") },
                     keyboardOptions = KeyboardOptions.Default.copy(
@@ -157,15 +249,26 @@ fun EditBuy(
 
             // Таблица товаров
             Row(
-                modifier = Modifier.fillMaxWidth().padding(all = 2.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Start
             ) {
-                Text("Название", modifier = Modifier.width(100.dp).height(40.dp), fontWeight = FontWeight.Bold)
-                Text("Кол-во", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-                Text("Цена", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-                Text("Условие", modifier = Modifier.weight(1f), fontWeight = FontWeight.Bold)
-
+                Text("Название",
+                    modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(textIndent = TextIndent(30.sp, 0.sp))
+                )
+                Text("Кол-во", modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(textIndent = TextIndent(50.sp, 0.sp))
+                )
+                Text("Цена", modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(textIndent = TextIndent(45.sp, 0.sp))
+                )
+                Text("Условие", modifier = Modifier.weight(1f),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(textIndent = TextIndent(20.sp, 0.sp))
+                )
             }
 
             products.forEachIndexed { index, product ->
@@ -173,17 +276,18 @@ fun EditBuy(
                     product = product,
                     index = index,
                     onUpdate = { idx, updatedProduct -> products[idx] = updatedProduct },
-                    participants = participants
+                    participants = participantsState,
+                    onParticipantNameChange = ::onParticipantNameChange
                 )
             }
 
-            // Кнопка "Добавить товар" слева внизу
+            // Кнопка "Добавить товар"
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Start) {
                 TextButton(
                     onClick = {
                         products.add(Product(
                             title = "",
-                            condition = participants.map { ConditionItem(it.name, false) },
+                            condition = participantsState.map { ConditionItem(it.name, false) },
                             price = 0.0,
                             quantity = 0
                         ))
@@ -193,14 +297,10 @@ fun EditBuy(
                 }
             }
 
-
             Button(
-                onClick = {
-                    // Тут  реализовать логику подсчета
-                },
-                modifier = Modifier.fillMaxWidth(),
-
-                ) {
+                onClick = { /* логика подсчета */ },
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text("Рассчитать")
             }
         }
@@ -212,7 +312,8 @@ fun ProductRow(
     product: Product,
     index: Int,
     onUpdate: (Int, Product) -> Unit,
-    participants: List<Participant>
+    participants: List<Participant>,
+    onParticipantNameChange: (Int, String) -> Unit      // колбэк изменения имени
 ) {
     val openDialog = remember { mutableStateOf(false) }
     val snackbarHostState = remember { SnackbarHostState() }
@@ -236,8 +337,9 @@ fun ProductRow(
                 onUpdate(index, product.copy(title = it))
 //                }
             },
-            modifier = Modifier.width(100.dp).height(60.dp),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next)
+            modifier = Modifier.width(150.dp).height(50.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
+            //overflow = TextOverflow.Visible
 
         )
         OutlinedTextField(
@@ -246,7 +348,7 @@ fun ProductRow(
                 val qty = newValue.toInt()
                 onUpdate(index, product.copy(quantity = qty))
             },
-            modifier = Modifier.width(50.dp).height(60.dp),
+            modifier = Modifier.width(50.dp).height(50.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number, imeAction = ImeAction.Next),
 
             )
@@ -256,7 +358,7 @@ fun ProductRow(
                 val price = newValue.toDoubleOrNull()
                 onUpdate(index, product.copy(price = price ?: 0.0))
             },
-            modifier = Modifier.width(70.dp).height(60.dp),
+            modifier = Modifier.width(70.dp).height(50.dp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
 
             )
@@ -273,22 +375,32 @@ fun ProductRow(
                 title = { Text("Условие для товара") },
                 text = {
                     Column {
-                        participants.forEach { participant ->
-                            val idx = currentConditions.indexOfFirst { it.participantName == participant.name }
-                            val conditionItem = if (idx >= 0) currentConditions[idx]
-                            else ConditionItem(participant.name, false)
-
+                        participants.forEachIndexed { participantIndex, participant ->
+                            val conditionItem = currentConditions.getOrElse(participantIndex) {
+                                ConditionItem(participant.name, false)
+                            }
                             Row(
                                 modifier = Modifier.fillMaxWidth(),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text(participant.name, modifier = Modifier.weight(1f))
+                                // Редактируемое имя участника
+                                OutlinedTextField(
+                                    value = participant.name,
+                                    onValueChange = { newName ->
+                                        onParticipantNameChange(participantIndex, newName)
+                                    },
+                                    modifier = Modifier.weight(1f).padding(end = 8.dp),
+                                    singleLine = true
+                                )
                                 Checkbox(
                                     checked = conditionItem.isChecked,
                                     onCheckedChange = { isChecked ->
                                         val updated = conditionItem.copy(isChecked = isChecked)
-                                        if (idx >= 0) currentConditions[idx] = updated
-                                        else currentConditions.add(updated)
+                                        if (participantIndex < currentConditions.size) {
+                                            currentConditions[participantIndex] = updated
+                                        } else {
+                                            currentConditions.add(updated)
+                                        }
                                         onUpdate(index, product.copy(condition = currentConditions.toList()))
                                     }
                                 )
