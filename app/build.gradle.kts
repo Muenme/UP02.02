@@ -81,4 +81,7 @@ dependencies {
 
     // Для загрузки и отображения изображений
     implementation("io.coil-kt:coil-compose:2.5.0")
+
+    //JSON
+    implementation("com.google.code.gson:gson:2.9.1")
 }

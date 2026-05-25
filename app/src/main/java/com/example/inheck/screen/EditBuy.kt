@@ -55,6 +55,7 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.ui.platform.LocalContext
+import com.example.inheck.file.DataStorage
 import com.example.inheck.screen.ReceiptScanner
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -70,6 +71,10 @@ fun EditBuy(
 
     var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
     var numberParticipants by remember { mutableStateOf(1) }
+
+    val context = LocalContext.current
+    val storage = remember { DataStorage(context) }
+    val scope = rememberCoroutineScope()
 
     // Инициализируем список: если пришёл не пустой – берём его, иначе – один пустой продукт
     var products = remember {
@@ -90,9 +95,7 @@ fun EditBuy(
     var isLoading by remember { mutableStateOf(false) }
 
 
-    val scope = rememberCoroutineScope()
 
-    val context = LocalContext.current
     val scanner = remember { ReceiptScanner(context) }
 
 // Launcher для выбора фото
@@ -132,8 +135,28 @@ fun EditBuy(
                     titleContentColor = Color.White
                 ),
                 actions = {
+                    // Кнопка Сохранить
                     TextButton(
-                        onClick = { onBackClick() },
+                        onClick = {
+                            scope.launch {
+                                isLoading = true
+
+                                // Создаём Buy
+                                val buy = Buy(
+                                    date = LocalDateTime.now(),
+                                    numberParticipants = numberParticipants,
+                                    productId = emptyList(), // заполнится в addBuy
+                                    participantId = 0, // укажите нужный id
+                                    amount = products.sumOf { it.price * it.quantity }
+                                )
+
+                                // Сохраняем (products автоматически сохранятся внутри)
+                                storage.addBuy(buy, products.toList())
+
+                                isLoading = false
+                                onBackClick()
+                            }
+                        },
                         enabled = !isLoading
                     ) {
                         Text(
@@ -142,6 +165,8 @@ fun EditBuy(
                             fontSize = 16.sp
                         )
                     }
+
+
                     TextButton(
                         onClick = { onBackClick() },
                         enabled = true
