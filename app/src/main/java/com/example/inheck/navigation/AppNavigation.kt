@@ -2,10 +2,13 @@ package com.example.inheck.navigation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -27,11 +30,14 @@ fun AppNavigation(
 ) {
     val context = LocalContext.current
     val storage = remember { DataStorage(context) }
-    val buys = remember { storage.loadBuys() }
+    var buys by remember { mutableStateOf(storage.loadBuys()) }
 
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route) {
 
         composable(Screen.Main.route) {
+            LaunchedEffect(Unit) {
+                buys = storage.loadBuys()
+            }
             Main(
                 onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
                 onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
