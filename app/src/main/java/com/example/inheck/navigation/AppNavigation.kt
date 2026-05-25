@@ -6,13 +6,16 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.inheck.data.entity.Buy
 import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Participant
-import com.example.inheck.data.entity.Product
 import com.example.inheck.screen.EditBuy
 import com.example.inheck.screen.Main
 import com.example.inheck.screen.ReadBuy
 import com.example.inheck.screen.SplashScreen
+import com.example.inheck.data.entity.Product
+import java.time.LocalDateTime
+import java.util.Date
 
 @ExperimentalMaterial3Api
 @Composable
@@ -24,7 +27,8 @@ fun AppNavigation(
         composable(Screen.Main.route) {
             Main(
                 onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
-                onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)}
+                onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
+                purchases = listOf()
             )
         }
         composable(Screen.EditBuy.route) {
@@ -39,14 +43,14 @@ fun AppNavigation(
         composable(Screen.ReadBuy.route) {
             ReadBuy(
                 onBackClick = { navController.navigateUp() },
-                onEditClick = {navController.navigate(Screen.EditBuy.route)},
-                date = "24.05.2026 14:30",
-                numberParticipants = 2,
-                participants = listOf(
+            onEditClick = { navController.navigateUp() },
+            date = "24.05.2026 14:30",
+            numberParticipants = 2,
+            participants = listOf(
                     Participant(id = 0, name = "Аня", check = ""),
                     Participant(id = 1, name = "Боря", check = "")
                 ),
-                products = listOf(
+            products = listOf(
                     Product(
                         title = "Молоко",
                         price = 85.50,
