@@ -4,7 +4,7 @@
             "outputFile": "com.example.inheck.app-mergeDebugResources-48:/values-v30/values-v30.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\zybin\\.gradle\\caches\\8.13\\transforms\\35a9ab7614433adc9f536960c0e4043b\\transformed\\material3\\res\\values-v30\\values-v30.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\35a9ab7614433adc9f536960c0e4043b\\transformed\\material3\\res\\values-v30\\values-v30.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

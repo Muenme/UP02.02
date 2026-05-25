@@ -1,11 +1,11 @@
-#Sun May 24 18:11:53 MSK 2026
-base.0=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
-base.3=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
-base.4=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.5=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
-base.6=C\:\\work\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Mon May 25 09:01:37 MSK 2026
+base.0=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
+base.3=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\2\\classes.dex
+base.4=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.5=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
+base.6=D\:\\Zybina\\UP02.02\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex

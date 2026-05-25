@@ -30,11 +30,9 @@ fun AppNavigation(
         composable(Screen.EditBuy.route) {
             EditBuy(
                 onBackClick = { navController.navigateUp() },
-                title = "Редактировать",
-                participants = listOf(
-                    Participant(id = 0, name = "Аня", check = ""),
-                    Participant(id = 1, name = "Боря", "")
-                ),
+                title = "Создание",
+                participants = listOf(),
+                initialParticipantsCount = 1,
                 initialProducts = listOf()
             )
         }

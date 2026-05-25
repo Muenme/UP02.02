@@ -4,24 +4,7 @@
             "outputFile": "com.example.inheck.app-mergeDebugResources-48:/values-bg/values-bg.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\zybin\\.gradle\\caches\\8.13\\transforms\\8f02ec71f8100e00d46fd882121e8021\\transformed\\ui\\res\\values-bg\\values-bg.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "107,216,319,412,515,618,702,778,869,960,1044,1128,1216,1288,1373,1450,1528,1604,1687,1756",
-                        "endColumns": "108,102,92,102,102,83,75,90,90,83,83,87,71,84,76,77,75,82,68,124",
-                        "endOffsets": "211,314,407,510,613,697,773,864,955,1039,1123,1211,1283,1368,1445,1523,1599,1682,1751,1876"
-                    },
-                    "to": {
-                        "startLines": "3,11,12,13,14,15,16,17,84,85,86,87,88,89,90,91,92,94,95,96",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "222,1072,1175,1268,1371,1474,1558,1634,9191,9282,9366,9450,9538,9610,9695,9772,9850,10027,10110,10179",
-                        "endColumns": "108,102,92,102,102,83,75,90,90,83,83,87,71,84,76,77,75,82,68,120",
-                        "endOffsets": "326,1170,1263,1366,1469,1553,1629,1720,9277,9361,9445,9533,9605,9690,9767,9845,9921,10105,10174,10295"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\zybin\\.gradle\\caches\\8.13\\transforms\\eecff2d705532f92bdf7808f4178b0b8\\transformed\\foundation\\res\\values-bg\\values-bg.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\eecff2d705532f92bdf7808f4178b0b8\\transformed\\foundation\\res\\values-bg\\values-bg.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\zybin\\.gradle\\caches\\8.13\\transforms\\466b7bc47160d265d11d511f5e783d4f\\transformed\\core-1.16.0\\res\\values-bg\\values-bg.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\466b7bc47160d265d11d511f5e783d4f\\transformed\\core-1.16.0\\res\\values-bg\\values-bg.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\zybin\\.gradle\\caches\\8.13\\transforms\\35a9ab7614433adc9f536960c0e4043b\\transformed\\material3\\res\\values-bg\\values-bg.xml",
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\8f02ec71f8100e00d46fd882121e8021\\transformed\\ui\\res\\values-bg\\values-bg.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "107,216,319,412,515,618,702,778,869,960,1044,1128,1216,1288,1373,1450,1528,1604,1687,1756",
+                        "endColumns": "108,102,92,102,102,83,75,90,90,83,83,87,71,84,76,77,75,82,68,124",
+                        "endOffsets": "211,314,407,510,613,697,773,864,955,1039,1123,1211,1283,1368,1445,1523,1599,1682,1751,1876"
+                    },
+                    "to": {
+                        "startLines": "3,11,12,13,14,15,16,17,84,85,86,87,88,89,90,91,92,94,95,96",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "222,1072,1175,1268,1371,1474,1558,1634,9191,9282,9366,9450,9538,9610,9695,9772,9850,10027,10110,10179",
+                        "endColumns": "108,102,92,102,102,83,75,90,90,83,83,87,71,84,76,77,75,82,68,120",
+                        "endOffsets": "326,1170,1263,1366,1469,1553,1629,1720,9277,9361,9445,9533,9605,9690,9767,9845,9921,10105,10174,10295"
+                    }
+                },
+                {
+                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\35a9ab7614433adc9f536960c0e4043b\\transformed\\material3\\res\\values-bg\\values-bg.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
