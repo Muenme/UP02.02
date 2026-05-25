@@ -55,182 +55,181 @@
 33-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:11:9-54
 34        android:supportsRtl="true"
 34-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:12:9-35
-35        android:testOnly="true"
-36        android:theme="@style/Theme.InСheck" >
-36-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
-37        <activity
-37-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
-38            android:name="com.example.inheck.MainActivity"
-38-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
-39            android:exported="true"
-39-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
-40            android:label="@string/app_name"
-40-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
-41            android:theme="@style/Theme.InСheck" >
-41-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
-42            <intent-filter>
-42-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
-43                <action android:name="android.intent.action.MAIN" />
-43-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
-43-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
-44
-45                <category android:name="android.intent.category.LAUNCHER" />
-45-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-45-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
-46            </intent-filter>
-47        </activity>
-48
-49        <service
-49-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
-50            android:name="androidx.room.MultiInstanceInvalidationService"
-50-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
-51            android:directBootAware="true"
-51-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
-52            android:exported="false" />
-52-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
-53
-54        <activity
-54-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:23:9-26:79
-55            android:name="androidx.activity.ComponentActivity"
-55-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:24:13-63
-56            android:exported="true"
-56-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:25:13-36
-57            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
-57-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:26:13-76
-58
-59        <provider
-59-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
-60            android:name="androidx.startup.InitializationProvider"
-60-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
-61            android:authorities="com.example.inheck.androidx-startup"
-61-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
-62            android:exported="false" >
-62-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
-63            <meta-data
-63-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
-64                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-64-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
-65                android:value="androidx.startup" />
-65-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
-66            <meta-data
-66-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
-67                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-67-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
-68                android:value="androidx.startup" />
-68-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
-69            <meta-data
-69-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-70                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-71                android:value="androidx.startup" />
-71-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-72        </provider>
-73
-74        <uses-library
-74-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
-75            android:name="androidx.window.extensions"
-75-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
-76            android:required="false" />
-76-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
-77        <uses-library
-77-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
-78            android:name="androidx.window.sidecar"
-78-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
-79            android:required="false" />
-79-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
-80
-81        <activity
-81-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:27:9-34:20
-82            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
-82-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:28:13-99
-83            android:exported="true"
-83-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:29:13-36
-84            android:theme="@style/WhiteBackgroundTheme" >
-84-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:30:13-56
-85            <intent-filter android:priority="-100" >
-85-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
-85-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
-86                <category android:name="android.intent.category.LAUNCHER" />
-86-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-86-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
-87            </intent-filter>
-88        </activity>
-89        <activity
-89-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:35:9-42:20
-90            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
-90-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:36:13-95
-91            android:exported="true"
-91-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:37:13-36
-92            android:theme="@style/WhiteBackgroundTheme" >
-92-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:38:13-56
-93            <intent-filter android:priority="-100" >
-93-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
-93-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
-94                <category android:name="android.intent.category.LAUNCHER" />
-94-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-94-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
-95            </intent-filter>
-96        </activity>
-97        <activity
-97-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:43:9-50:20
-98            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
-98-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:44:13-103
-99            android:exported="true"
-99-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:45:13-36
-100            android:theme="@style/WhiteBackgroundDialogTheme" >
-100-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:46:13-62
-101            <intent-filter android:priority="-100" >
-101-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
-101-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
-102                <category android:name="android.intent.category.LAUNCHER" />
-102-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
-102-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
-103            </intent-filter>
-104        </activity>
-105        <activity
-105-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
-106            android:name="androidx.compose.ui.tooling.PreviewActivity"
-106-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:24:13-71
-107            android:exported="true" />
-107-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:25:13-36
-108
-109        <receiver
-109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-110            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-111            android:directBootAware="false"
-111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-112            android:enabled="true"
-112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-113            android:exported="true"
-113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-114            android:permission="android.permission.DUMP" >
-114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-116                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-117            </intent-filter>
-118            <intent-filter>
-118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-119                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-119-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-119-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-120            </intent-filter>
-121            <intent-filter>
-121-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-122                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-122-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-122-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-123            </intent-filter>
-124            <intent-filter>
-124-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-125                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-125-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-125-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-126            </intent-filter>
-127        </receiver>
-128    </application>
-129
-130</manifest>
+35        android:theme="@style/Theme.InСheck" >
+35-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:13:9-45
+36        <activity
+36-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:14:9-24:20
+37            android:name="com.example.inheck.MainActivity"
+37-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:15:13-41
+38            android:exported="true"
+38-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:16:13-36
+39            android:label="@string/app_name"
+39-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:17:13-45
+40            android:theme="@style/Theme.InСheck" >
+40-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:18:13-49
+41            <intent-filter>
+41-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:19:13-23:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:17-69
+42-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:20:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+44-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+45            </intent-filter>
+46        </activity>
+47
+48        <service
+48-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+49            android:name="androidx.room.MultiInstanceInvalidationService"
+49-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+50            android:directBootAware="true"
+50-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+51            android:exported="false" />
+51-->[androidx.room:room-runtime:2.6.1] C:\AndroidSettings\Gradle\caches\8.13\transforms\9fb50913f9ce4498578debefae743c50\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+52
+53        <activity
+53-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:23:9-26:79
+54            android:name="androidx.activity.ComponentActivity"
+54-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:24:13-63
+55            android:exported="true"
+55-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:25:13-36
+56            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+56-->[androidx.compose.ui:ui-test-manifest:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\7e32691d2b81b7929e6cad9df5675704\transformed\ui-test-manifest-1.11.2\AndroidManifest.xml:26:13-76
+57
+58        <provider
+58-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+59            android:name="androidx.startup.InitializationProvider"
+59-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+60            android:authorities="com.example.inheck.androidx-startup"
+60-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+61            android:exported="false" >
+61-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+62            <meta-data
+62-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+63                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+63-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+64                android:value="androidx.startup" />
+64-->[androidx.emoji2:emoji2:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\626b323387af96f5bb8543785dd85bff\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+65            <meta-data
+65-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+66                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+66-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+67                android:value="androidx.startup" />
+67-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\AndroidSettings\Gradle\caches\8.13\transforms\72835901a7e9c6b4576fa96fc00430c3\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+68            <meta-data
+68-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+69                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+69-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+70                android:value="androidx.startup" />
+70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+71        </provider>
+72
+73        <uses-library
+73-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
+74            android:name="androidx.window.extensions"
+74-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
+75            android:required="false" />
+75-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
+76        <uses-library
+76-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
+77            android:name="androidx.window.sidecar"
+77-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
+78            android:required="false" />
+78-->[androidx.window:window:1.5.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\55e9e58d8dae34d0997325ab63c7ea06\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
+79
+80        <activity
+80-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:27:9-34:20
+81            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+81-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:28:13-99
+82            android:exported="true"
+82-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:29:13-36
+83            android:theme="@style/WhiteBackgroundTheme" >
+83-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:30:13-56
+84            <intent-filter android:priority="-100" >
+84-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
+84-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
+85                <category android:name="android.intent.category.LAUNCHER" />
+85-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+85-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+86            </intent-filter>
+87        </activity>
+88        <activity
+88-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:35:9-42:20
+89            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+89-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:36:13-95
+90            android:exported="true"
+90-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:37:13-36
+91            android:theme="@style/WhiteBackgroundTheme" >
+91-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:38:13-56
+92            <intent-filter android:priority="-100" >
+92-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
+92-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
+93                <category android:name="android.intent.category.LAUNCHER" />
+93-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+93-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+94            </intent-filter>
+95        </activity>
+96        <activity
+96-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:43:9-50:20
+97            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+97-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:44:13-103
+98            android:exported="true"
+98-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:45:13-36
+99            android:theme="@style/WhiteBackgroundDialogTheme" >
+99-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:46:13-62
+100            <intent-filter android:priority="-100" >
+100-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:13-33:29
+100-->[androidx.test:core:1.7.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\fae4042681dd95b3012828960e3d72f5\transformed\core-1.7.0\AndroidManifest.xml:31:28-51
+101                <category android:name="android.intent.category.LAUNCHER" />
+101-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:17-77
+101-->D:\Zybina\UP02.02\app\src\main\AndroidManifest.xml:22:27-74
+102            </intent-filter>
+103        </activity>
+104        <activity
+104-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+105            android:name="androidx.compose.ui.tooling.PreviewActivity"
+105-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+106            android:exported="true" />
+106-->[androidx.compose.ui:ui-tooling-android:1.11.2] C:\AndroidSettings\Gradle\caches\8.13\transforms\d4a587daab54438c26680a09cadeded6\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+107
+108        <receiver
+108-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+109            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+109-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+110            android:directBootAware="false"
+110-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+111            android:enabled="true"
+111-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+112            android:exported="true"
+112-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+113            android:permission="android.permission.DUMP" >
+113-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+114            <intent-filter>
+114-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+115                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+115-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+116            </intent-filter>
+117            <intent-filter>
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+118                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+119            </intent-filter>
+120            <intent-filter>
+120-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+121                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+121-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+121-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+122            </intent-filter>
+123            <intent-filter>
+123-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+124                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+124-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+124-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\AndroidSettings\Gradle\caches\8.13\transforms\40d765c0ae557ed3d7d2241152c804c0\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+125            </intent-filter>
+126        </receiver>
+127    </application>
+128
+129</manifest>
