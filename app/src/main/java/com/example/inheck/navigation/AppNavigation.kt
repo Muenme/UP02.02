@@ -1,66 +1,73 @@
 package com.example.inheck.navigation
 
-import android.window.SplashScreen
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.inheck.data.entity.Buy
+import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Participant
 import com.example.inheck.screen.EditBuy
 import com.example.inheck.screen.Main
 import com.example.inheck.screen.ReadBuy
 import com.example.inheck.screen.SplashScreen
-import java.time.LocalDateTime
-import java.util.Date
+import com.example.inheck.data.entity.Product
+import com.example.inheck.file.DataStorage
 
 @ExperimentalMaterial3Api
 @Composable
 fun AppNavigation(
     navController: NavHostController
 ) {
-
-    var test1: Buy = Buy(
-        id = 0,
-        date = LocalDateTime.now(),
-        numberParticipants = 2,
-        productId = listOf(0),
-        participantId = 0,
-        amount = 120.0
-    )
-    var test2: Buy = Buy(
-        id = 0,
-        date = LocalDateTime.now(),
-        numberParticipants = 5,
-        productId = listOf(0),
-        participantId = 0,
-        amount = 100000.0
-    )
+    val context = LocalContext.current
+    val storage = remember { DataStorage(context) }
+    val buys = remember { storage.loadBuys() }
 
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route) {
+
         composable(Screen.Main.route) {
             Main(
                 onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
                 onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
-                purchases = listOf(test1, test2)
+                purchases = buys
             )
         }
         composable(Screen.EditBuy.route) {
             EditBuy(
                 onBackClick = { navController.navigateUp() },
-                title = "Редактировать",
-                participants = listOf(
-                    Participant(id = 0, name = "Аня", check = ""),
-                    Participant(id = 1, name = "Боря", "")
-                ),
+                title = "Создание",
+                participants = listOf(),
+                initialParticipantsCount = 1,
                 initialProducts = listOf()
             )
         }
         composable(Screen.ReadBuy.route) {
             ReadBuy(
-                onBack = { navController.navigateUp() },
-                toEditBuy = {navController.navigate(Screen.EditBuy.route)}
+                onBackClick = { navController.navigateUp() },
+            onEditClick = { navController.navigateUp() },
+            date = "24.05.2026 14:30",
+            numberParticipants = 2,
+            participants = listOf(
+                    Participant(id = 0, name = "Аня", check = ""),
+                    Participant(id = 1, name = "Боря", check = "")
+                ),
+            products = listOf(
+                    Product(
+                        title = "Молоко",
+                        price = 85.50,
+                        quantity = 2,
+                        condition = listOf(
+                            ConditionItem("Аня", true),
+                            ConditionItem("Боря", false)
+                        )
+                    )
+                )
             )
         }
 
