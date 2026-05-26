@@ -4,41 +4,7 @@
             "outputFile": "com.example.inheck.app-mergeDebugResources-53:/values-uz/values-uz.xml",
             "map": [
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\f28deeb174f1e838eeff05e8db276b6b\\transformed\\foundation\\res\\values-uz\\values-uz.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,169,280",
-                        "endColumns": "113,110,100",
-                        "endOffsets": "164,275,376"
-                    },
-                    "to": {
-                        "startLines": "2,115,116",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "105,12287,12398",
-                        "endColumns": "113,110,100",
-                        "endOffsets": "214,12393,12494"
-                    }
-                },
-                {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\195b56c11293bcacb5d4e992aa521b9f\\transformed\\ui\\res\\values-uz\\values-uz.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "107,213,312,397,501,608,704,787,877,970,1053,1134,1217,1291,1376,1452,1527,1600,1683,1751",
-                        "endColumns": "105,98,84,103,106,95,82,89,92,82,80,82,73,84,75,74,72,82,67,120",
-                        "endOffsets": "208,307,392,496,603,699,782,872,965,1048,1129,1212,1286,1371,1447,1522,1595,1678,1746,1867"
-                    },
-                    "to": {
-                        "startLines": "3,11,12,31,32,33,34,35,102,103,104,105,106,107,108,109,110,112,113,114",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "219,1061,1160,3486,3590,3697,3793,3876,11195,11288,11371,11452,11535,11609,11694,11770,11845,12019,12102,12170",
-                        "endColumns": "105,98,84,103,106,95,82,89,92,82,80,82,73,84,75,74,72,82,67,116",
-                        "endOffsets": "320,1155,1240,3585,3692,3788,3871,3961,11283,11366,11447,11530,11604,11689,11765,11840,11913,12097,12165,12282"
-                    }
-                },
-                {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\da8f7b31421927b734040bd559a7404c\\transformed\\play-services-basement-18.4.0\\res\\values-uz\\values.xml",
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\da8f7b31421927b734040bd559a7404c\\transformed\\play-services-basement-18.4.0\\res\\values-uz\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -55,7 +21,41 @@
                     }
                 },
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\4239d9613690dc61137bda230a4c4d0e\\transformed\\play-services-base-18.5.0\\res\\values-uz\\values.xml",
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\f28deeb174f1e838eeff05e8db276b6b\\transformed\\foundation\\res\\values-uz\\values-uz.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,169,280",
+                        "endColumns": "113,110,100",
+                        "endOffsets": "164,275,376"
+                    },
+                    "to": {
+                        "startLines": "2,115,116",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "105,12287,12398",
+                        "endColumns": "113,110,100",
+                        "endOffsets": "214,12393,12494"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\195b56c11293bcacb5d4e992aa521b9f\\transformed\\ui\\res\\values-uz\\values-uz.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "107,213,312,397,501,608,704,787,877,970,1053,1134,1217,1291,1376,1452,1527,1600,1683,1751",
+                        "endColumns": "105,98,84,103,106,95,82,89,92,82,80,82,73,84,75,74,72,82,67,120",
+                        "endOffsets": "208,307,392,496,603,699,782,872,965,1048,1129,1212,1286,1371,1447,1522,1595,1678,1746,1867"
+                    },
+                    "to": {
+                        "startLines": "3,11,12,31,32,33,34,35,102,103,104,105,106,107,108,109,110,112,113,114",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "219,1061,1160,3486,3590,3697,3793,3876,11195,11288,11371,11452,11535,11609,11694,11770,11845,12019,12102,12170",
+                        "endColumns": "105,98,84,103,106,95,82,89,92,82,80,82,73,84,75,74,72,82,67,116",
+                        "endOffsets": "320,1155,1240,3585,3692,3788,3871,3961,11283,11366,11447,11530,11604,11689,11765,11840,11913,12097,12165,12282"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\4239d9613690dc61137bda230a4c4d0e\\transformed\\play-services-base-18.5.0\\res\\values-uz\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -72,7 +72,7 @@
                     }
                 },
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\09349d666d9f9203af283089164d570f\\transformed\\material3\\res\\values-uz\\values-uz.xml",
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\09349d666d9f9203af283089164d570f\\transformed\\material3\\res\\values-uz\\values-uz.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -89,7 +89,7 @@
                     }
                 },
                 {
-                    "source": "C:\\AndroidSettings\\Gradle\\caches\\8.13\\transforms\\8057baed2cb9efb7f67eb22d440f12f3\\transformed\\core-1.16.0\\res\\values-uz\\values-uz.xml",
+                    "source": "C:\\Users\\Mary\\.gradle\\caches\\8.13\\transforms\\8057baed2cb9efb7f67eb22d440f12f3\\transformed\\core-1.16.0\\res\\values-uz\\values-uz.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
