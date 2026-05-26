@@ -34,7 +34,6 @@ fun AppNavigation(
     val storage = remember { DataStorage(context) }
     var buys by remember { mutableStateOf(storage.loadBuys()) }
 
-
     NavHost(navController = navController, startDestination = Screen.SplashScreen.route) {
 
         composable(Screen.Main.route) {
