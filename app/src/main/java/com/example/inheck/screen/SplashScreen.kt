@@ -50,7 +50,7 @@ fun SplashScreen (
                 .padding(20.dp)
         ){
             Image(
-                painter = painterResource(R.drawable.cheque),
+                painter = painterResource(R.drawable.shopping),
                 contentDescription = "",
             )
         }

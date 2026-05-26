@@ -11,8 +11,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.inheck.data.entity.Buy
 import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Participant
@@ -39,43 +41,76 @@ fun AppNavigation(
                 buys = storage.loadBuys()
             }
             Main(
-                onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.route)},
-                onNavigateToReadBuy =  {navController.navigate(Screen.ReadBuy.route)},
+                onNavigateToEditBuy = {navController.navigate(Screen.EditBuy.createRoute(Screen.EditBuy.NEW_BUY))},
+                onNavigateToReadBuy = { id ->
+                    navController.navigate(Screen.ReadBuy.createRoute(id))
+                },
                 purchases = buys
             )
         }
-        composable(Screen.EditBuy.route) {
-            EditBuy(
-                onBackClick = { navController.navigateUp() },
-                title = "Создание",
-                participants = listOf(),
-                initialParticipantsCount = 1,
-                initialProducts = listOf()
-            )
-        }
-        composable(Screen.ReadBuy.route) {
-            ReadBuy(
-                onBackClick = { navController.navigateUp() },
-            onEditClick = { navController.navigateUp() },
-            date = "24.05.2026 14:30",
-            numberParticipants = 2,
-            participants = listOf(
-                    Participant(id = 0, name = "Аня", check = ""),
-                    Participant(id = 1, name = "Боря", check = "")
-                ),
-            products = listOf(
-                    Product(
-                        title = "Молоко",
-                        price = 85.50,
-                        quantity = 2,
-                        condition = listOf(
-                            ConditionItem("Аня", true),
-                            ConditionItem("Боря", false)
-                        )
-                    )
+        composable(
+            route = Screen.EditBuy.route,
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { backStackEntry ->
+
+            val buyId = backStackEntry.arguments?.getInt("id") ?: Screen.EditBuy.NEW_BUY
+            val participants = storage.loadParticipants()
+
+            // Если id = -1 — создаём новую, иначе — редактируем существующую
+            if (buyId == Screen.EditBuy.NEW_BUY) {
+                // Создание новой покупки
+                EditBuy(
+                    onBackClick = {
+                        buys = storage.loadBuys()
+                        navController.navigateUp()
+                    },
+                    title = "Создание",
+                    participants = participants,
+                    initialParticipantsCount = 1,
+                    initialProducts = listOf()
                 )
-            )
+            } else {
+                // Редактирование существующей
+                val buy = storage.loadBuys().find { it.id == buyId }
+                val products = buy?.let { storage.getProductsForBuy(it) } ?: emptyList()
+
+                EditBuy(
+                    onBackClick = {
+                        buys = storage.loadBuys()
+                        navController.navigateUp()
+                    },
+                    title = "Редактирование",
+                    participants = participants,
+                    initialParticipantsCount = buy?.numberParticipants ?: 1,
+                    initialProducts = products
+                )
+            }
         }
+        composable(
+            route = Screen.ReadBuy.route,
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { backStackEntry ->
+
+            // Получаем id из маршрута
+            val buyId = backStackEntry.arguments?.getInt("id") ?: 0
+
+            // Находим нужную покупку
+            val buy = storage.loadBuys().find { it.id == buyId }
+            val products = buy?.let { storage.getProductsForBuy(it) } ?: emptyList()
+            val participants = storage.loadParticipants()
+
+            if (buy != null) {
+                ReadBuy(
+                    onBackClick = { navController.navigateUp() },
+                    onEditClick = { navController.navigate(Screen.EditBuy.createRoute(buyId)) },
+                    date = buy.date.toString(),
+                    numberParticipants = buy.numberParticipants,
+                    participants = participants,
+                    products = products
+                )
+            }
+        }
+
 
         composable(Screen.SplashScreen.route) {
             SplashScreen(
