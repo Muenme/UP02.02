@@ -67,7 +67,8 @@ fun AppNavigation(
                     title = "Создание",
                     participants = participants,
                     initialParticipantsCount = 1,
-                    initialProducts = listOf()
+                    initialProducts = listOf(),
+                    existingBuyId = buyId
                 )
             } else {
                 // Редактирование существующей
@@ -82,7 +83,8 @@ fun AppNavigation(
                     title = "Редактирование",
                     participants = participants,
                     initialParticipantsCount = buy?.numberParticipants ?: 1,
-                    initialProducts = products
+                    initialProducts = products,
+                    existingBuyId = buyId
                 )
             }
         }

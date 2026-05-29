@@ -90,12 +90,17 @@ class DataStorage(private val context: Context) {
 
     fun addParticipant(participant: Participant) {
         val list = loadParticipants().toMutableList()
-        // Автонумерация через IdGenerator
-        val newParticipant = participant.copy(
-            id = idGenerator.nextId(IdGenerator.PARTICIPANT)
-        )
-        list.add(newParticipant)
-        saveParticipants(list)
+        val exists = list.any { it.name == participant.name }
+
+        if (!exists) {
+            // Автонумерация через IdGenerator
+            val newParticipant = participant.copy(
+                id = idGenerator.nextId(IdGenerator.PARTICIPANT)
+            )
+            list.add(newParticipant)
+            saveParticipants(list)
+        }
+
     }
 
     fun deleteParticipant(id: Int) {
@@ -178,6 +183,29 @@ class DataStorage(private val context: Context) {
         list.add(newBuy)
         saveBuys(list)
         return newBuy
+    }
+
+    fun updateBuy(buy: Buy, products: List<Product>): Buy {
+        // Удаляем старые продукты
+        val oldBuy = loadBuys().find { it.id == buy.id }
+        oldBuy?.productId?.forEach { deleteProduct(it) }
+
+        // Сохраняем новые продукты
+        val savedProducts = products.map { addProduct(it) }
+        val productIds = savedProducts.map { it.id }
+
+        // Обновляем покупку
+        val list = loadBuys().toMutableList()
+        val index = list.indexOfFirst { it.id == buy.id }
+
+        val updatedBuy = buy.copy(productId = productIds)
+
+        if (index >= 0) {
+            list[index] = updatedBuy
+        }
+
+        saveBuys(list)
+        return updatedBuy
     }
 
     fun deleteBuy(id: Int) {
