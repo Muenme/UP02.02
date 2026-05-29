@@ -84,7 +84,8 @@ fun EditBuy(
     title: String,
     participants: List<Participant>,
     initialParticipantsCount: Int = 1,
-    initialProducts: List<Product> = emptyList()
+    initialProducts: List<Product> = emptyList(),
+    existingBuyId: Int = -1  // ← ДОБАВЬТЕ
 ) {
     val customFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
     var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
@@ -261,6 +262,19 @@ fun EditBuy(
                             scope.launch {
                                 isLoading = true
 
+
+
+                                //Сохраняем участников
+                                participantsState.forEach { participant ->
+                                    //Лог прямо перед вызовом
+                                    android.util.Log.d("TEST", "Сохраняем участника: ${participant.name}")
+
+                                    storage.addParticipant(participant)
+                                }
+
+                                android.util.Log.d("SAVE", "В файле после сохранения: ${storage.loadParticipants().size}")
+
+
                                 // Создаём Buy
                                 val buy = Buy(
                                     date = LocalDateTime.now(),
@@ -270,8 +284,15 @@ fun EditBuy(
                                     amount = products.sumOf { it.price * it.quantity }
                                 )
 
-                                // Сохраняем (products автоматически сохранятся внутри)
-                                storage.addBuy(buy, products.toList())
+                                // Если id = -1 создаём новую, иначе обновляем
+                                if (existingBuyId == -1) {
+                                    storage.addBuy(buy, products.toList())
+                                } else {
+                                    storage.updateBuy(
+                                        buy.copy(id = existingBuyId),
+                                        products.toList()
+                                    )
+                                }
 
                                 isLoading = false
                                 onBackClick()
