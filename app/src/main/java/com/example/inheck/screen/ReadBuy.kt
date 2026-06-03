@@ -5,8 +5,11 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,6 +22,8 @@ import androidx.compose.ui.unit.sp
 import com.example.inheck.data.entity.ConditionItem
 import com.example.inheck.data.entity.Participant
 import com.example.inheck.data.entity.Product
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,16 +31,21 @@ import com.example.inheck.data.entity.Product
 fun ReadBuy(
     onBackClick: () -> Unit,
     onEditClick: () -> Unit,
+    onDeleteClick: () -> Unit,
     date: String,
     numberParticipants: Int,
     participants: List<Participant>,
     products: List<Product>
 ) {
+    val customFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
+    var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
+    var showDeleteDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Просмотр покупки", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Text("Просмотр покупки", fontSize = 17.sp, fontWeight = FontWeight.Bold)
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color(0xFF0D47A1),
@@ -49,6 +59,13 @@ fun ReadBuy(
                 actions = {
                     TextButton(onClick = onEditClick) {
                         Text("Редактировать", color = Color.White, fontSize = 16.sp)
+                    }
+                    IconButton(onClick = { showDeleteDialog = true }) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Удалить",
+                            tint = Color(0xFFE53935)  // красный
+                        )
                     }
                 }
             )
@@ -83,6 +100,29 @@ fun ReadBuy(
                 ReadProductRow(product = product, participants = participants)
                 HorizontalDivider()
             }
+        }
+        if (showDeleteDialog) {
+            AlertDialog(
+                onDismissRequest = { showDeleteDialog = false },
+                title = { Text("Удалить покупку?") },
+                text = { Text("Это действие нельзя отменить. Все данные о покупке и товарах будут удалены.") },
+                confirmButton = {
+                    Button(
+                        onClick = {
+                            showDeleteDialog = false
+                            onDeleteClick()
+                        },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE53935))
+                    ) {
+                        Text("Удалить")
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showDeleteDialog = false }) {
+                        Text("Отмена")
+                    }
+                }
+            )
         }
     }
 }

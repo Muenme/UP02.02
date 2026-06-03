@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.inheck.CalculationTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-06-01T17:04:22.008Z" hostname="DESKTOP-BMDPDDP" time="0.014">
+  <properties/>
+  <testcase name="Two_participants_share_one_product_equally" classname="com.example.inheck.CalculationTest" time="0.012"/>
+  <testcase name="One_product_one_participant_pays_full_amount" classname="com.example.inheck.CalculationTest" time="0.001"/>
+  <testcase name="Three_participants_divide_equally" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <testcase name="Product_one_participant_only" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <testcase name="Multiple_products_different_participants" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <testcase name="Empty_list" classname="com.example.inheck.CalculationTest" time="0.001"/>
+  <testcase name="Sum_all_receipts_equal_sum_all_goods" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <testcase name="One_is_marked_then_no_one_pays_anyt" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <testcase name="Item_with_quantity_more_than_one" classname="com.example.inheck.CalculationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

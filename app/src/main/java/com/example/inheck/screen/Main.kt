@@ -36,7 +36,7 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun Main(
     onNavigateToEditBuy: () -> Unit,
-    onNavigateToReadBuy: () -> Unit,
+    onNavigateToReadBuy: (Int) -> Unit,
     purchases: List<Buy>
 ){
     Scaffold (
@@ -64,7 +64,7 @@ fun Main(
         ) {
             for (pur in purchases){
                 item {
-                    ButtonBuy(onNavigateToReadBuy, pur.date, pur.numberParticipants, pur.amount)
+                    ButtonBuy(onNavigateToReadBuy, pur)
                 }
             }
 
@@ -73,13 +73,11 @@ fun Main(
 }
 @Composable
 fun ButtonBuy(
-    onNavigateToReadBuy: () -> Unit,
-    date: LocalDateTime,
-    numberParticipants: Int,
-    amount: Double
+    onNavigateToReadBuy: (Int) -> Unit,
+    buy: Buy
 ){
     Button(
-        onClick = onNavigateToReadBuy,
+        onClick = { onNavigateToReadBuy(buy.id) },
         modifier = Modifier
             .fillMaxWidth()
             .padding(3.dp),
@@ -101,7 +99,7 @@ fun ButtonBuy(
             ){
                 Box {
                     Text(
-                        text = date.format(DateTimeFormatter.ofPattern("Дата dd.MM.uuuu")).toString(),
+                        text = buy.date.format(DateTimeFormatter.ofPattern("Дата dd.MM.uuuu")).toString(),
                         fontSize = 18.sp
                     )
                 }
@@ -110,7 +108,7 @@ fun ButtonBuy(
                         .align(Alignment.TopEnd)
                 ){
                     Text(
-                        text = date.format(DateTimeFormatter.ofPattern(" Время HH:mm")).toString(),
+                        text = buy.date.format(DateTimeFormatter.ofPattern(" Время HH:mm")).toString(),
                         fontSize = 18.sp,
                         textAlign = TextAlign.Right
                     )
@@ -119,11 +117,11 @@ fun ButtonBuy(
             }
 
             Text(
-                text = "Количество участников "+numberParticipants.toString(),
+                text = "Количество участников "+buy.numberParticipants.toString(),
                 fontSize = 16.sp
             )
             Text(
-                text = "Сумма "+amount.toString(),
+                text = "Сумма "+buy.amount.toString(),
                 fontSize = 16.sp
             )
         }
