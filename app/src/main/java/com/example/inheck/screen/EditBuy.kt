@@ -62,6 +62,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -72,6 +73,7 @@ import androidx.compose.ui.platform.LocalContext
 import com.example.inheck.file.DataStorage
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.ui.text.style.TextAlign
+import com.example.inheck.navigation.Screen
 import com.example.inheck.processing.calculatePersonalChecks
 import com.example.inheck.processing.ParticipantCheck
 
@@ -85,7 +87,7 @@ fun EditBuy(
     participants: List<Participant>,
     initialParticipantsCount: Int = 1,
     initialProducts: List<Product> = emptyList(),
-    existingBuyId: Int = -1  // ← ДОБАВЬТЕ
+    existingBuyId: Int = Screen.EditBuy.NEW_BUY
 ) {
     val customFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
     var date by remember { mutableStateOf(LocalDateTime.now().format(customFormatter)) }
@@ -248,6 +250,8 @@ fun EditBuy(
     val scope = rememberCoroutineScope()
     var calculationResults by remember { mutableStateOf<List<ParticipantCheck>?>(null) }
 
+    var showDeleteDialog by remember { mutableStateOf(false) }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -261,8 +265,6 @@ fun EditBuy(
                         onClick = {
                             scope.launch {
                                 isLoading = true
-
-
 
                                 //Сохраняем участников
                                 participantsState.forEach { participant ->
@@ -311,6 +313,16 @@ fun EditBuy(
                         enabled = true
                     ) {
                         Text("Отмена", color = Color.White, fontSize = 16.sp)
+                    }
+                    // Кнопка удаления – только при редактировании существующей покупки
+                    if (existingBuyId != Screen.EditBuy.NEW_BUY) {
+                        IconButton(onClick = { showDeleteDialog = true }) {
+                            Icon(
+                                imageVector = Icons.Default.Delete,
+                                contentDescription = "Удалить",
+                                tint = Color(0xFFE53935)  // красный
+                            )
+                        }
                     }
                 }
 
@@ -520,6 +532,32 @@ fun EditBuy(
                         Spacer(modifier = Modifier.height(8.dp))
                     }
                 }
+            }
+            // Диалог подтверждения удаления
+            if (showDeleteDialog) {
+                AlertDialog(
+                    onDismissRequest = { showDeleteDialog = false },
+                    title = { Text("Удалить покупку?") },
+                    text = { Text("Это действие нельзя отменить. Все данные о покупке и товарах будут удалены.") },
+                    confirmButton = {
+                        Button(
+                            onClick = {
+                                showDeleteDialog = false
+                                // Выполняем удаление через storage
+                                storage.deleteBuy(existingBuyId)
+                                onBackClick()   // возвращаемся на главный экран
+                            },
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFE53935))
+                        ) {
+                            Text("Удалить")
+                        }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { showDeleteDialog = false }) {
+                            Text("Отмена")
+                        }
+                    }
+                )
             }
         }
     }

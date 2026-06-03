@@ -105,6 +105,10 @@ fun AppNavigation(
                 ReadBuy(
                     onBackClick = { navController.navigateUp() },
                     onEditClick = { navController.navigate(Screen.EditBuy.createRoute(buyId)) },
+                    onDeleteClick = {
+                        storage.deleteBuy(buyId)
+                        navController.navigateUp()
+                    },
                     date = buy.date.toString(),
                     numberParticipants = buy.numberParticipants,
                     participants = participants,
