@@ -65,7 +65,7 @@ fun AppNavigation(
                         navController.navigateUp()
                     },
                     title = "Создание",
-                    participants = participants,
+                    participants = emptyList(),
                     initialParticipantsCount = 1,
                     initialProducts = listOf(),
                     existingBuyId = buyId
