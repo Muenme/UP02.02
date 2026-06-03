@@ -134,6 +134,7 @@ ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:6:5-7:37
 application
 ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:9:5-29:19
 INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:9:5-29:19
+INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:9:5-29:19
 MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Mary\.gradle\caches\8.13\transforms\da46b9f5ce8bd657b95984a8c3629de6\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\Mary\.gradle\caches\8.13\transforms\da46b9f5ce8bd657b95984a8c3629de6\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
 MERGED from [com.google.android.gms:play-services-analytics-impl:18.2.0] C:\Users\Mary\.gradle\caches\8.13\transforms\03d84dc8c940f98f9a55b6e2eadcad6e\transformed\play-services-analytics-impl-18.2.0\AndroidManifest.xml:30:5-20
@@ -192,6 +193,8 @@ MERGED from [com.google.android.odml:image:1.0.0-beta1] C:\Users\Mary\.gradle\ca
 		ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:14:9-41
 	android:fullBackupContent
 		ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:12:9-54
+	android:testOnly
+		INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
 	android:roundIcon
 		ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:15:9-54
 	android:icon
@@ -222,6 +225,14 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
 		ADDED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml:26:27-74
+profileable
+INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml reason: profileable injection requested
+INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
+INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
+	android:enabled
+		INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
+	android:shell
+		INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
 uses-sdk
 INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\projeckt\UP02.02\app\src\main\AndroidManifest.xml
